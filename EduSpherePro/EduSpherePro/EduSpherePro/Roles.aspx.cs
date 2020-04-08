@@ -41,10 +41,11 @@ namespace EduSpherePro.EduSpherePro
 
                 BD.DataBindToDropDownList(ddlFilterOrganizationName, string.Format("SELECT OrganizationName,OrganizationId FROM EduSphere.Organizations WHERE OrganizationType='{0}'", "FRANCHISEE"));
                 string queryRoleRequests;
-                if (User.IsInRole("AdminIC"))
+                //Allow Manager to view the role request of her/his Organization only ONLY...shivmani 8th April 2020.
+                if (User.IsInRole("Manager"))
                     queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
-                                                                          JOIN EduSphere.States p ON r.RequesterState=p.StateID
-                                                                          WHERE RequesterState=(SELECT RequesterState FROM EduSphere.RoleRequests WHERE RequesterEmail='{0}')  
+                                                                          //JOIN EduSphere.States p ON r.RequesterState=p.StateID
+                                                                          WHERE r.OganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{0}')  
                                                                           ORDER BY RequestID DESC",User.Identity.Name.ToString());
                 else
                     queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 

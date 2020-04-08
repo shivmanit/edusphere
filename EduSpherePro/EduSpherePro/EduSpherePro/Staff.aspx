@@ -280,10 +280,10 @@
 										<th colspan="1"><asp:Label Width="20px" Text="" runat="server"></asp:Label></th>
 										<th colspan="1"><asp:Label Width="100px" Text="Function" runat="server"></asp:Label></th>
 										<th colspan="2"><asp:Label Width="200px" Text="FullName" runat="server"></asp:Label></th>
-										<th colspan="1"><asp:Label Width="200px" Text="Email" runat="server"></asp:Label></th>
+										<th colspan="2"><asp:Label Width="300px" Text="Email" runat="server"></asp:Label></th>
                                         <th colspan="1"><asp:Label Width="150px" Text="Phone" runat="server"></asp:Label></th>
                                         
-                                        <th colspan="2"><asp:Label Width="200px" class="ace-icon fa fa-clock-o bigger-110 hidden-480" Text="" runat="server"></asp:Label></th>				
+                                        <th colspan="2"><asp:Label Width="100px" class="ace-icon fa fa-clock-o bigger-110 hidden-480" Text="" runat="server"></asp:Label></th>				
 										
 									</tr>
 								</thead>
@@ -298,11 +298,11 @@
                                         <td><asp:LinkButton Width="20px" ID="btnViewStaffDetails"  class="green bigger-140 show-details-btn" Text="<i class='ace-icon fa fa-angle-double-down bigger-120'></i>" ToolTip="Profile" OnCommand="ManageStaffVisibility" CommandName="ViewProfile" CommandArgument='<%#Eval("EmployeeId") %>' runat="server" ></asp:LinkButton></td>
 										<td colspan="1"><asp:Label Width="100px" Text=<%#Eval("OrganizationName")%> runat="server"></asp:Label></td>
 										<td colspan="2"><asp:Label Width="200px" Text=<%#Eval("FullName")%> runat="server"></asp:Label></td>
-										<td colspan="1"><asp:Label Width="200px" Text=<%#Eval("Email")%> runat="server"></asp:Label> </td>
+										<td colspan="2"><asp:Label Width="300px" Text=<%#Eval("Email")%> runat="server"></asp:Label> </td>
                                         <td colspan="1"><asp:Label Width="150px" Text=<%#Eval("PhoneOne")%> runat="server"></asp:Label></td>
                                         
 										<td colspan="2">
-											<div class="hidden-sm hidden-xs btn-group" style="width:200px;">
+											<div class="hidden-sm hidden-xs btn-group" style="width:100px;">
                                                  
 												<!--<button class="btn btn-xs btn-info">
 													<i class="ace-icon fa fa-book bigger-120"> Accounts</i>
