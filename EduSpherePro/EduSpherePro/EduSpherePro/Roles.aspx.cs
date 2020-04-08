@@ -43,9 +43,8 @@ namespace EduSpherePro.EduSpherePro
                 string queryRoleRequests;
                 //Allow Manager to view the role request of her/his Organization only ONLY...shivmani 8th April 2020.
                 if (User.IsInRole("Manager"))
-                    queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
-                                                                          //JOIN EduSphere.States p ON r.RequesterState=p.StateID
-                                                                          WHERE r.OganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{0}')  
+                    queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests
+                                                                          WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{0}')  
                                                                           ORDER BY RequestID DESC",User.Identity.Name.ToString());
                 else
                     queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
