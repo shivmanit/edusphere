@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-EduSpherePro-20171104124246.mdf;Initial Catalog=aspnet-EduSpherePro-20171104124246;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Saketsoft\\WebApplications\\SpeedjetAviationDotIn\\EduSpherePro\\EduSpherePro\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="NTA-Web.config Connection String" description="NTA Connection String used in web.config by the application to access the database." defaultValue="Data Source=118.67.248.175;database=speedjetdb;uid=speedjetuser;pwd=speedjetuser@123" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Saketsoft\\WebApplications\\SpeedjetAviationDotIn\\EduSpherePro\\EduSpherePro\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NTA']/@connectionString" />
+  </parameter>
+  <parameter name="Excel03ConString-Web.config Connection String" description="Excel03ConString Connection String used in web.config by the application to access the database." defaultValue="Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Saketsoft\\WebApplications\\SpeedjetAviationDotIn\\EduSpherePro\\EduSpherePro\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Excel03ConString']/@connectionString" />
+  </parameter>
+  <parameter name="Excel07+ConString-Web.config Connection String" description="Excel07+ConString Connection String used in web.config by the application to access the database." defaultValue="Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 12.0 Xml" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Saketsoft\\WebApplications\\SpeedjetAviationDotIn\\EduSpherePro\\EduSpherePro\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Excel07+ConString']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,279 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DigiViewSite.master.cs" Inherits="EduSpherePro.DigiView.DigiViewSite" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>MyDigi</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="/Content/TemplateApp/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/Content/TemplateApp/font-awesome/4.5.0/css/font-awesome.min.css" />
+        <!-- page specific plugin styles -->
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="/Content/TemplateApp/css/fonts.googleapis.com.css" />
+        <!-- ace styles -->
+		<link rel="stylesheet" href="/Content/TemplateApp/css/ace.min.css"  />
+        <!--[if lte IE 9]>
+			<link rel="stylesheet" href="/Content/TemplateApp/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="/Content/TemplateApp/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="/Content/TemplateApp/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="/Content/TemplateApp/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<!--<script src="/Content/TemplateApp/jsace-extra.min.js"></script>-->
+
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="/Content/TemplateApp/jshtml5shiv.min.js"></script>
+		<script src="/Content/TemplateApp/jsrespond.min.js"></script>
+		<![endif]-->
+       <asp:ContentPlaceHolder ID="head" runat="server">
+       </asp:ContentPlaceHolder>
+</head>
+
+<body class="no-skin">
+    <form id="form1" runat="server">
+     <!--Top nav bar containing brand and logged in person photo and dropdown to view profile and exit-->
+     <div id="navbar" class="navbar navbar-default          ace-save-state">
+			<div class="navbar-container ace-save-state" id="navbar-container">
+				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="navbar-header pull-left">
+					<a href="/EduSpherePro/EduSpherePro.aspx" class="navbar-brand">
+						<small>
+							<span class="fa"><img src="../Content/TemplateApp/images/icons/logo.png" alt="logo"  width="50" /></span> EduSpherePro	
+						</small>
+					</a>
+				</div>
+                
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						<li class="light-purple dropdown-modal">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <asp:DataList ID="dlLoggedInUser" runat="server">
+                                    <ItemTemplate>
+                                         <asp:Image class="nav-user-photo" ImageUrl='<%# Eval("MemberPhoto") %>' AlternateText="Photo" runat="server" />
+                                         <%# Eval("FullName")%>&nbsp&nbsp<i class="ace-icon fa fa-caret-down"><small></small></i>   
+                                     </ItemTemplate>
+                                </asp:DataList>
+							</a>
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+						        <li>
+									<a href="#">
+									    <i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="/Default.aspx">
+										<i class="ace-icon fa fa-power-off"></i>
+										Exit MyDigi
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-container -->
+		</div><!--end top nav bar-->
+
+		<div class="main-container ace-save-state" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+
+			<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+				<script type="text/javascript">
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        <a href="/DigiView/myprograms.aspx" class="btn  btn-info">
+							<i class="ace-icon fa fa-users"></i>
+                        </a>
+						<a href="/DigiView/myattendance.aspx" class="btn  btn-warning">
+							<i class="ace-icon fa fa-product-hunt"></i>
+						</a>
+
+						<a href="/DigiView/Quizzes.aspx" class="btn m btn-danger">
+							<i class="ace-icon fa fa-cogs"></i>
+						</a>
+
+						<a href="/DigiView/Admission.aspx" class="btn  btn-success">
+							<i class="ace-icon fa fa-signal"></i>
+						</a>
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- /.sidebar-shortcuts -->
+
+				<ul class="nav nav-list">
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-university"></i>
+                            <span class="menu-text">My Academy</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+                        <b class="arrow"></b>
+						<ul class="submenu">
+							<li class="">
+								<a href="/DigiView/myprograms.aspx">
+                                    <i class="menu-icon fa fa-eye pink"></i>
+                                    Programs
+								</a>
+                                <b class="arrow"></b>
+							</li>
+                           
+                            <li class="">
+								<a href="/DigiView/MyAttendance.aspx">
+                                    <i class="menu-icon fa fa-eye pink"></i>
+                                    Attendance
+								</a>
+                                <b class="arrow"></b>
+							</li>
+                            <li class="">
+								<a href="/DigiView/Quizzes.aspx">
+                                    <i class="menu-icon fa fa-eye pink"></i>
+                                    Quizzes
+								</a>
+                                <b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+                    <li class="">
+						<a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-building-o"></i>
+                            <span class="menu-text">Enrolment</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+                        <b class="arrow"></b>
+						<ul class="submenu">
+							<li class="">
+								<a href="/DigiView/Admission.aspx">
+                                    <i class="menu-icon fa fa-ticket pink"></i>
+                                    Registration
+								</a>
+                                <b class="arrow"></b>
+							</li>
+                            <li class="">
+								<a href="/DigiView/MyBlog.aspx">
+                                    <i class="menu-icon fa fa-newspaper-o pink"></i>
+                                    Blogs
+								</a>
+                                <b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+				</ul><!-- /.nav-list -->
+
+				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+				</div>
+			</div>
+
+			<div class="main-content">
+				<div class="main-content-inner">
+					<!-- /.page-content -->
+                    <div class="page-content">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+				</div>
+			</div><!-- /.main-content -->
+
+			<%--<div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">SAKETSOFT TECHNOLOGIES</span>
+							&copy; <%: DateTime.Now.Year %>
+						</span>
+
+						&nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+					</div>
+				</div>
+			</div>--%>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+    
+    </form>
+    <!-- basic scripts -->
+
+		<!--[if !IE]> -->
+		<script src="/Content/TemplateApp/js/jquery-2.1.4.min.js"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script src="/Content/TemplateApp/jsjquery-1.11.3.min.js"></script>
+<![endif]-->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='/Content/TemplateApp/jsjquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="/Content/TemplateApp/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<!--[if lte IE 8]>
+		  <script src="/Content/TemplateApp/jsexcanvas.min.js"></script>
+		<![endif]-->
+		<script src="/Content/TemplateApp/js/jquery-ui.custom.min.js"></script>
+		<script src="/Content/TemplateApp/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="/Content/TemplateApp/js/jquery.easypiechart.min.js"></script>
+		<script src="/Content/TemplateApp/js/jquery.sparkline.index.min.js"></script>
+		<script src="/Content/TemplateApp/js/jquery.flot.min.js"></script>
+		<%--<script src="/Content/TemplateApp/jsjquery.flot.pie.min.js"></script>--%>
+		<script src="/Content/TemplateApp/js/jquery.flot.resize.min.js"></script>
+
+		<!-- ace scripts -->
+		<script src="/Content/TemplateApp/js/ace-elements.min.js"></script>
+		<script src="/Content/TemplateApp/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"  CodeBehind="Site.master.cs" Inherits="EduSpherePro.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SJA || Home || Speedjet Aviation</title>
+    <meta name="keywords" content="SJA, Speedjet Aviation, Mumbai, Pune, Thane, Ahmedabad, Indore, Jaipur, Lucknow, Kolkata, Patna, Kanpur, Ranchi, Dubai, Oman." />
+    <meta name="description" content="Speed Jet Aviation is a leading institute in India offering courses in the aviation and allied industries" />
+    <meta name="author" content="Saketsoft Technologies Private Limited" />
+    <link rel="apple-touch-icon" sizes="180x180" href="Content/TemplateSite/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Content/TemplateSite/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Content/TemplateSite/images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="Content/TemplateSite/images/favicons/site.webmanifest">
+
+    <!-- plugin scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Content/TemplateSite/css/animate.min.css">
+    <link rel="stylesheet" href="Content/TemplateSite/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Content/TemplateSite/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="Content/TemplateSite/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="Content/TemplateSite/plugins/fontawesome-free-5.11.2-web/css/all.min.css">
+    <link rel="stylesheet" href="Content/TemplateSite/plugins/kipso-icons/style.css">
+    <link rel="stylesheet" href="Content/TemplateSite/css/magnific-popup.css">
+    <link rel="stylesheet" href="Content/TemplateSite/css/vegas.min.css">
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="Content/TemplateSite/css/style.css">
+    <link rel="stylesheet" href="Content/TemplateSite/css/responsive.css">
+
+</head>
+<body>
+    <form runat="server">
+        <%--<div class="preloader"><span></span></div>--%><!-- /.preloader -->
+        <div class="page-wrapper">
+            <div class="topbar-one">
+            <div class="container">
+                <%--<div class="topbar-one__left">
+                    
+                        <a href="#"><strong>welcome@poonamshuklainstitute.in</strong></a>
+                        <a href="#"><strong>+91 77770 23021</strong></a>
+                     
+                </div>--%><!-- /.topbar-one__left -->
+                 <%--<div class="header__social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-square"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>--%><!-- /.header__social -->
+                <div class="topbar-one__right">
+                      <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <div class="nav navbar-nav navbar-right">
+                                <span><a href="../EduSpherePro/EduSpherePro.aspx">EDUSPHEREPRO</a>
+                                <a href="../DigiView/MyDigi.aspx">STUDENT</a></span>&nbsp&nbsp
+                               <%-- <li><a runat="server" href="~/CRM/GlobeCRM.aspx">BizSpherePro</a></li>
+                                <li><a runat="server" href="~/Account/Register.aspx">Register</a></li>--%>
+                                <%--<div><a runat="server" href="~/EduSpherePro/EduSpherePro.aspx">EDUSPHEREPRO</a></div>
+                                <div><a runat="server" href="~/DigiView/MyDigi.aspx">MySphere</a>--%>
+                                
+                            </div>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <div class="nav navbar-nav navbar-right">
+                                <div><a runat="server" href="/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></div>
+                                <div>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </div>
+                            </div>
+                        </LoggedInTemplate>
+                        </asp:LoginView>
+                        
+                </div><!-- /.topbar-one__right -->
+            </div><!-- /.container -->
+        </div><!-- /.topbar-one -->
+
+        <header class="site-header site-header__header-one ">
+            <nav class="navbar navbar-expand-lg navbar-light header-navigation stricky">
+                <div class="container clearfix">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="logo-box clearfix">
+                        <a class="navbar-brand" href="default">
+                            <img src="../Content/TemplateSite/images/logo.png" class="main-logo" width="128" alt="Awesome Image" />
+                        </a>
+                       
+                        <button class="menu-toggler" data-target=".main-navigation">
+                            <span class="kipso-icon-menu"></span>
+                        </button>
+                    </div><!-- /.logo-box -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="main-navigation">
+                        <ul class=" navigation-box">
+                            <li class="current">
+                                <a href="../about">AboutUs</a>
+                                <ul class="sub-menu">
+                                    <li><a href="../about">About SJA</a></li>
+                                    <li><a href="../leadership">Leadership Team</a></li>
+                                    <li><a href="../gallery">Gallery</a></li>
+                                    <%--<li><a href="#">Header Versions</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="default">Header 01</a></li>
+                                            <li><a href="index-2.html">Header 02</a></li>
+                                            <li><a href="index-3.html">Header 03</a></li>
+                                        </ul>
+                                    </li>--%>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <a href="../programs">Programs</a>
+                                <ul class="sub-menu">
+                                    <%--<li><a href="#">Banking & Finance</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="../programs">Diploma in Financial Management Studies</a></li>
+                                            <li><a href="../programs">Diploma in Banking & Financial Management</a></li>
+                                            <li><a href="../programs">Wealth Management</a></li>
+                                            <li><a href="../programs">Retail Banking</a></li>
+                                            <li><a href="../programs">Trade Finance</a></li>
+                                        </ul>
+                                    </li>--%>
+                                    <li><a href="#">Aviation</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="../programs">Aviation Management & Hospitality (Domestic)</a></li>
+                                            <li><a href="../programs">Aviation Management & Hospitality (International)</a></li>                          
+                                            <li><a href="../programs">Commercial Pilot License (CPL)</a></li>
+                                        </ul>
+                                    </li>
+                                </ul><!-- /.sub-menu -->
+                            </li>
+                            <li>
+                                <a href="../faculty">Faculty</a>
+                                <%--<ul class="sub-menu">
+                                    <li><a href="teachers.html">Teachers</a></li>
+                                    <li><a href="team-details.html">Teachers Details</a></li>
+                                    <li><a href="become-teacher.html">Become Teacher</a></li>
+                                </ul>--%>
+                            </li>
+                            <li>
+                                <a href="../enquiry">Enquire</a>
+                                <%--<ul class="sub-menu">
+                                    <li><a href="../admissionprocess">AdmissionProcess</a></li>
+                                    <li><a href="../enquiry">Enquire Now</a></li>
+                                </ul>--%>
+                            </li>
+                            <li>
+                                <a href="../admission">Admission</a>
+                            </li>
+                            <%--<li>
+                                <a href="../contact">LocateUs</a>
+                            </li>--%>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                    
+                </div>
+                <!-- /.container -->
+            </nav>
+            <div class="site-header__decor">
+                <div class="site-header__decor-row">
+                    <div class="site-header__decor-single">
+                        <div class="site-header__decor-inner-1"></div><!-- /.site-header__decor-inner -->
+                    </div><!-- /.site-header__decor-single -->
+                    <div class="site-header__decor-single">
+                        <div class="site-header__decor-inner-2"></div><!-- /.site-header__decor-inner -->
+                    </div><!-- /.site-header__decor-single -->
+                    <div class="site-header__decor-single">
+                        <div class="site-header__decor-inner-3"></div><!-- /.site-header__decor-inner -->
+                    </div><!-- /.site-header__decor-single -->
+                </div><!-- /.site-header__decor-row -->
+            </div><!-- /.site-header__decor -->
+        </header><!-- /.site-header -->
+
+            <!--Main Content -->
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            
+            <footer class="site-footer">
+            <div class="site-footer__upper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-sm-12">
+                            <div class="footer-widget footer-widget__contact">
+                                <h2 class="footer-widget__title">Courses</h2><!-- /.footer-widget__title -->
+                                <ul class="list-unstyled footer-widget__course-list">
+                                   <%-- <li>
+                                        <h2><a href="programs">Diploma in Banking & Financial Management</a></h2>
+                                        
+                                    </li>
+                                    <li>
+                                        <h2><a href="programs"> Diploma in Financial Management Studies </a></h2>
+                                        
+                                    </li>--%>
+                                    <li>
+                                        <h2><a href="programs">Aviation & Hospitality Management</a></h2>
+                                        
+                                    </li>
+                                    <li>
+                                        <h2><a href="programs">Commercial Pilot License Training </a></h2>
+                                        
+                                    </li>
+                                </ul><!-- /.footer-widget__course-list -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-3 -->
+                        <div class="col-xl-3 col-lg-6 col-sm-12">
+                            <div class="footer-widget footer-widget__link">
+                                <h2 class="footer-widget__title">Explore</h2><!-- /.footer-widget__title -->
+                                <div class="footer-widget__link-wrap">
+                                    <ul class="list-unstyled footer-widget__link-list">
+                                        <li><a href="../default">About</a></li>
+                                        <li><a href="../admission">Programs</a></li>
+                                        <li><a href="../enquiry">Enquiry</a></li>
+                                        <li><a href="../admission">Admission</a></li>
+                                        <%--<li><a href="../contact">LocateUs</a></li>--%>
+                                    </ul><!-- /.footer-widget__link-list -->
+                                    <ul class="list-unstyled footer-widget__link-list">
+                                        <%--<li><a href="#">Help </a></li>--%>
+                                        <li><a href="../enquiry">Enquire Now</a></li>
+                                        <li><a href="../amission">Admission</a></li>
+                                    </ul><!-- /.footer-widget__link-list -->
+                                </div><!-- /.footer-widget__link-wrap -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-3 -->
+                        <div class="col-xl-3 col-lg-6 col-sm-12">
+                            <div class="footer-widget footer-widget__gallery">
+                                <h2 class="footer-widget__title">Gallery</h2><!-- /.footer-widget__title -->
+                                <ul class="list-unstyled footer-widget__gallery-list">
+                                    <li><a href="#"><img src="Content/TemplateSite/images/footer-1-1.png" alt=""></a></li>
+                                    <li><a href="#"><img src="Content/TemplateSite/images/footer-1-2.png" alt=""></a></li>
+                                    <li><a href="#"><img src="Content/TemplateSite/images/footer-1-3.png" alt=""></a></li>
+                                    <li><a href="#"><img src="Content/TemplateSite/images/footer-1-4.png" alt=""></a></li>
+                                    <li><a href="#"><img src="Content/TemplateSite/images/footer-1-5.png" alt=""></a></li>
+                                    <li><a href="#"><img src="Content/TemplateSite/images/footer-1-6.png" alt=""></a></li>
+                                </ul><!-- /.footer-widget__gallery -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-3 -->
+                        <div class="col-xl-3 col-lg-6 col-sm-12">
+                            <div class="footer-widget footer-widget__about">
+                                <h2 class="footer-widget__title">About</h2><!-- /.footer-widget__title -->
+                                <p class="footer-widget__text">Speed Jet Aviation is a leading institute in India offering courses in the aviation and allied industries. Established in 2012 in Mumbai, we are now present at eleven national and two international locations including Pune, Thane, Ahmedabad, Indore, Jaipur, Lucknow, Kolkata, Patna, Kanpur, Ranchi, Dubai, and Oman.</p><!-- /.footer-widget__text -->
+                                <div class="footer-widget__btn-block">
+                                    <a href="../Enquiry" class="thm-btn">Enquire</a><!-- /.thm-btn -->
+                                    <a href="../Admission" class="thm-btn">Admission</a><!-- /.thm-btn -->
+                                </div><!-- /.footer-widget__btn-block -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.site-footer__upper -->
+            <div class="site-footer__bottom">
+                <div class="container">
+                    <p class="site-footer__copy">&copy; Copyright <%: DateTime.Now.Year %> by <a href="#">Speedjet Aviation Academy LLP</a></p>
+                    <div class="site-footer__social">
+                        <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top"><i class="kipso-icon-top-arrow"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div><!-- /.site-footer__social -->
+                    <!-- /.site-footer__copy -->
+                </div><!-- /.container -->
+            </div><!-- /.site-footer__bottom -->
+            </footer><!-- /.site-footer -->
+        </div>
+
+    </form>
+
+    <script src="Content/TemplateSite/js/jquery.min.js"></script>
+    <script src="Content/TemplateSite/js/bootstrap.bundle.min.js"></script>
+    <script src="Content/TemplateSite/js/owl.carousel.min.js"></script>
+    <script src="Content/TemplateSite/js/waypoints.min.js"></script>
+    <script src="Content/TemplateSite/js/jquery.counterup.min.js"></script>
+    <script src="Content/TemplateSite/js/TweenMax.min.js"></script>
+    <script src="Content/TemplateSite/js/wow.js"></script>
+    <script src="Content/TemplateSite/js/jquery.magnific-popup.min.js"></script>
+    <script src="Content/TemplateSite/js/countdown.min.js"></script>
+    <script src="Content/TemplateSite/js/vegas.min.js"></script>
+    <script src="Content/TemplateSite/js/jquery.validate.min.js"></script>
+    <script src="Content/TemplateSite/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- template scripts -->
+    <script src="Content/TemplateSite/js/theme.js"></script>
+</body>
+</html>
