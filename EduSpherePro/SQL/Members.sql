@@ -69,20 +69,20 @@ SELECT OrganizationName,MemberID,FullName,st.PhoneOne,st.Email,st.MembershipStat
 ------------------------------------------------------------------------------------------------------
 
 CREATE PROCEDURE spDeleteMember
-@NeurotherpistID INT
+@MemberID INT
 AS
 BEGIN
- DELETE FROM Evaluations.OnlineTestTransaction WHERE CandidateID=@NeurotherpistID
- DELETE FROM Evaluations.CandidateTestAttendance WHERE CandidateID=@NeurotherpistID
- DELETE FROM Evaluations.OnlineTestTransaction WHERE CandidateID=@NeurotherpistID
- DELETE FROM EduSphere.PostalAddresses WHERE MemberID=@NeurotherpistID
- DELETE FROM EduSphere.MemberDocuments WHERE MemberID=@NeurotherpistID
- DELETE FROM EduSphere.MemberAccount WHERE MemberID=@NeurotherpistID
- DELETE FROM EduSphere.MemberAcademics WHERE MemberID=@NeurotherpistID
- DELETE FROM EduSphere.Members WHERE MemberID=@NeurotherpistID
+ DELETE FROM Evaluations.OnlineTestTransaction WHERE CandidateID=@MemberID
+ DELETE FROM Evaluations.CandidateTestAttendance WHERE CandidateID=@MemberID
+ DELETE FROM Evaluations.OnlineTestTransaction WHERE CandidateID=@MemberID
+ DELETE FROM EduSphere.PostalAddresses WHERE MemberID=@MemberID
+ DELETE FROM EduSphere.MemberDocuments WHERE MemberID=@MemberID
+ DELETE FROM EduSphere.MemberAccount WHERE MemberID=@MemberID
+ DELETE FROM EduSphere.MemberAcademics WHERE MemberID=@MemberID
+ DELETE FROM EduSphere.Members WHERE MemberID=@MemberID
 END
 
-EXEC spDeleteMember 333
+EXEC spDeleteMember 100
 DROP PROCEDURE spDeleteMember
 
 SELECT * FROM EduSphere.Members WHERE Email='s.ankita_23@yahoo.com'

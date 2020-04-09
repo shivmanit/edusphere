@@ -22,11 +22,12 @@ TRUNCATE TABLE EduSphere.RoleRequests
 UPDATE EduSphere.RoleRequests SET RequestedRoleName='Student' WHERE  RequestedRoleName='STUDENT'
 UPDATE EduSphere.RoleRequests SET OrganizationID=90
 
-SELECT  * FROM EduSphere.RoleRequests r 
-                                                                JOIN EduSphere.Organizations o ON r.OrganizationID=o.OrganizationID
-                                                                WHERE RequestID='496'
+SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='nisha.verma@speedjetaviation.com')  
+                                                                          ORDER BY RequestID DESC
 
 SELECT * FROM EduSphere.RoleRequests WHERE RequesterState=(SELECT RequesterState FROM EduSphere.RoleRequests WHERE RequesterEmail='manore.paresh@gmail.com')
+SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='zenab.sultan@speedjetaviation.com')
+
 SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
                     JOIN EduSphere.States p ON r.RequesterState=p.StateID
                     WHERE RequesterState=(SELECT RequesterState FROM EduSphere.RoleRequests WHERE RequesterEmail=User.Id.ToString())  
@@ -45,9 +46,9 @@ ALTER TABLE EduSphere.RoleRequests ADD OrganizationID INT constraint cstMentorOr
 ALTER TABLE EduSphere.RoleRequests ADD City VARCHAR(25)
 
 SELECT * FROM EduSphere.RoleRequests WHERE RequesterEmail='rkneurotherapy@gmail.com'
-UPDATE EduSphere.RoleRequests SET RequestApprovalStatus='NEW' WHERE RequestID=111
+UPDATE EduSphere.RoleRequests SET OrganizationID='105' WHERE RequestID=111
 
-DELETE FROM EduSphere.RoleRequests WHERE RequestID= '496'
+DELETE FROM EduSphere.RoleRequests WHERE RequestID= '102'
 
 CREATE PROCEDURE spNewRequest
 @RequesterFullName VARCHAR(50),

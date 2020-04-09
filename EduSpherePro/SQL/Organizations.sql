@@ -46,6 +46,7 @@ ALTER TABLE EduSphere.Organizations ADD  country VARCHAR(50)
 
 DELETE FROM EduSphere.FinAccountDetails WHERE 100<=OrganizationID AND OrganizationID<105
 DELETE FROM EduSphere.Organizations WHERE 100<=OrganizationID AND OrganizationID<105
+DELETE FROM EduSphere.Organizations WHERE OrganizationID=100
 
 SELECT * FROM EduSphere.Organizations
 SELECT OrganizationName,OrganizationID FROM EduSphere.Organizations
@@ -140,11 +141,29 @@ create procedure spDeleteOrganization
 @OrganizationId int
 AS
 BEGIN
-delete from EduSphere.MemberServiceAccount where OrganizationId=@OrganizationId
+-----Delete all Postal Address of Members belonging to that Organization---
+delete from EduSphere.PostalAddresses where MemberId=(SELECT TOP 1 MemberID FROM EduSphere.Members WHERE OrganizationID=@OrganizationId)
+
+-----Delete all Learning Tokens assigned to Students of that Organization---
+delete from EduSphere.LearningTokens where MemberId=(SELECT TOP 1 MemberID FROM EduSphere.Members WHERE OrganizationID=@OrganizationID)
+-----Delete all Attendace of Members of that Organization---
+delete from Evaluations.CandidateTestAttendance where CandidateId=(SELECT TOP 1 MemberID FROM EduSphere.Members WHERE OrganizationID=@OrganizationID)
+delete from Evaluations.OnlineTestTransaction where CandidateId=(SELECT TOP 1 MemberID FROM EduSphere.Members WHERE OrganizationID=@OrganizationID)
+delete from EduSphere.StudentAttendance where StudentId=(SELECT TOP 1 MemberID FROM EduSphere.Members WHERE OrganizationID=@OrganizationID)
+
+
+
+
+-----Delete all MemberAccounts of Members belonging to that Organization---
+delete from EduSphere.MemberAccount where MemberId=(SELECT TOP 1 MemberID FROM EduSphere.Members WHERE OrganizationID=@OrganizationID)
+delete from EduSphere.FinAccountDetails where OrganizationId=@OrganizationId
 delete from EduSphere.Organizations where OrganizationId=@OrganizationId
+delete from EduSphere.Members where OrganizationId=@OrganizationId
+delete from EduSphere.RoleRequests where OrganizationId=@OrganizationId
+
 END
 
-execute spDeleteOrganization
+execute spDeleteOrganization 101
  
 drop procedure spDeleteOrganization
 select * from EduSphere.Organizations
@@ -165,6 +184,8 @@ BankIFSCCode VARCHAR(50),
 
 DROP TABLE EduSphere.FinAccountDetails
 SELECT * FROM EduSphere.FinAccountDetails
+
+DELETE FROM EduSphere.FinAccountDetails WHERE OrganizationId=100
 ------------------------------------------------------------
 CREATE PROCEDURE spInsertFinAccountDetails
 @OrganizationId INT,
