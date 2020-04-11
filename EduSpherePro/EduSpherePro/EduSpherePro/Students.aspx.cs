@@ -57,7 +57,11 @@ namespace EduSpherePro.EduSpherePro
 
                 //Display list of customers
                 //Refresh Student List
-                string strCmd = string.Format("SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MembershipType='{0}' ORDER BY MemberID DESC","STUDENT");
+                string strCmd = string.Format(@"SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle 
+                                                                FROM EduSphere.Members c 
+                                                                JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID 
+                                                                WHERE MembershipType='{0}' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='{1}')
+			                                                    ORDER BY MemberID DESC", "STUDENT",User.Identity.Name.ToString());
                 //Display Student Count
                 DisplayStudentSummary();
                 BD.DataBindToDataList(dlStudents, strCmd);
@@ -83,7 +87,19 @@ namespace EduSpherePro.EduSpherePro
             if (strCmdArg == "ALL")
                 strCmd = string.Format("SELECT TOP 50 MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MembershipType='{0}' ORDER BY MemberID DESC","STUDENT");
             else
-                strCmd = string.Format("SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}'", strSearch,"STUDENT");
+            {
+                if (User.IsInRole("Manager"))
+                {
+                    strCmd = string.Format("SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='{2}'", strSearch, "STUDENT", User.Identity.Name.ToString());
+
+                }
+                else
+                {
+                    strCmd = string.Format("SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}' ", strSearch, "STUDENT");
+
+                }
+            }
+                
 
             pnlEnroll.Visible                       = false;
             pnlPersonalDetails.Visible              = false;

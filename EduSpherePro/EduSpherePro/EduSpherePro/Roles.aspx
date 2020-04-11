@@ -275,7 +275,7 @@
                                                     <asp:BoundField DataField="RequestId"  HeaderText="Id"></asp:BoundField>
                                                     <asp:BoundField DataField="RequestApprovalStatus" HeaderText="Status"></asp:BoundField>
                                                     <asp:BoundField DataField="RequesterFullName" HeaderText="Name"></asp:BoundField>
-                                                     <asp:BoundField DataField="OrganizationName" HeaderText="MentoringOrg"></asp:BoundField>
+                                                    <asp:BoundField DataField="OrganizationName" HeaderText="MentoringOrg"></asp:BoundField>
                                                     <asp:BoundField DataField="RequestedRoleName"  HeaderText="ReqType"></asp:BoundField>
                                                     <asp:BoundField DataField="RequesterEmail" HeaderText="Email"></asp:BoundField>
                                                     <asp:BoundField DataField="RequesterPhone" HeaderText="Phone"></asp:BoundField>                                 
@@ -448,7 +448,7 @@
                                     </tr>
                                     <tr>
                                         <th>Mentoring Org</th><td><asp:Label ID="lblOrgName" Text='<%#Eval("OrganizationName") %>' runat="server"></asp:Label></td>
-                                        
+                                        <th>Mentoring Org Id</th><td><asp:Label ID="lblOrgID" Text='<%#Eval("OrganizationId") %>' runat="server"></asp:Label></td>
                                     </tr>
                                     
                                     <tr>

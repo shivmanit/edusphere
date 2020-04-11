@@ -34,6 +34,8 @@ EmploymentType varchar(20) CONSTRAINT cstEmpType CHECK(EmploymentType IN('EMPLOY
 DateOfLeaving DateTime
 )
 
+ALTER TABLE EduSphere.Staff ALTER COLUMN FullName VARCHAR(50)
+
 ALTER TABLE EduSphere.Staff DROP COLUMN EMAIL
 ALTER TABLE EduSphere.Staff ADD  EMAIL varchar(50)
 ALTER TABLE EduSphere.Staff DROP CONSTRAINT  cstStaffGender
@@ -62,7 +64,7 @@ CREATE PROCEDURE spInsertStaff
 --@AccessRequestID INT,
 @OrganizationID INT,
 @EmpPhotoPath varchar(100),
-@FullName varchar(20),
+@FullName varchar(50),
 @Gender VARCHAR(20),
 @PhoneOne varchar(20),
 @PhoneTwo varchar(20),

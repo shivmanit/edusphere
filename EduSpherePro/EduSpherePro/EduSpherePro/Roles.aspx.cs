@@ -43,9 +43,11 @@ namespace EduSpherePro.EduSpherePro
                 string queryRoleRequests;
                 //Allow Manager to view the role request of her/his Organization only ONLY...shivmani 8th April 2020.
                 if (User.IsInRole("Manager"))
-                    queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests
-                                                                          WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{0}')  
-                                                                          ORDER BY RequestID DESC",User.Identity.Name.ToString());
+                    queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r
+                                                                          JOIN EduSphere.States p ON r.RequesterState=p.StateID 
+                                                                          JOIN EduSphere.Organizations o on r.OrganizationID=o.OrganizationID
+                                                                          WHERE r.OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{0}')  
+                                                                          ORDER BY RequestID DESC", User.Identity.Name.ToString());
                 else
                     queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
                                                                             JOIN EduSphere.States p ON r.RequesterState=p.StateID 
@@ -99,11 +101,11 @@ namespace EduSpherePro.EduSpherePro
                         if (User.IsInRole("Manager"))
                             strCmd = string.Format(@"SELECT * FROM EduSphere.RoleRequests r JOIN EduSphere.States p ON r.RequesterState=p.StateID 
                                                         JOIN EduSphere.Organizations o ON r.OrganizationID=o.OrganizationID
-                                                    WHERE RequesterPhone LIKE '%{1}%' OR RequesterFullName LIKE '%{1}%' ", stdRoleRequests, strSearchParam);
+                                                    WHERE RequesterPhone LIKE '%{0}%' OR RequesterFullName LIKE '%{0}%' AND r.OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{1}') ",strSearchParam,User.Identity.Name.ToString());
                         else
                             strCmd = string.Format(@"SELECT * FROM EduSphere.RoleRequests r JOIN EduSphere.States p ON r.RequesterState=p.StateID  
                                                         JOIN EduSphere.Organizations o ON r.OrganizationID=o.OrganizationID
-                                                    WHERE RequesterPhone LIKE '%{1}%' OR RequesterFullName LIKE '%{1}%' ", stdRoleRequests, strSearchParam);
+                                                    WHERE RequesterPhone LIKE '%{0}%' OR RequesterFullName LIKE '%{0}%' ", strSearchParam);
 
                     }
                     if (cmdName == "FilterRoleRequests")
@@ -353,8 +355,9 @@ namespace EduSpherePro.EduSpherePro
         }
         
         //Create New User
-        protected void CreateNewUser(int RequestID,string FullName, string Email,string Phone,string Role, string Country, string Address,string Password)
+        protected string CreateNewUser(int RequestID,string FullName, string Email,string Phone,string Role, string Country, string Address,string Password)
         {
+            string status = "";
             var manager         = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager   = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user            = new ApplicationUser() { FullName = FullName, UserName = Email, Email = Email };
@@ -371,22 +374,10 @@ namespace EduSpherePro.EduSpherePro
                 string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
                 manager.SendEmail(user.Id, "Confirm your Neurotherapy Academy Account.", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>. Your email is your user id and Password is first four letters of your Name followed by @First four digits of your phone number. e.g Raje@7892.Its case sensitive, only first letter is capital");
 
-                
-                //if created successfully, update request table
-                SqlCommand ObjCmd = new SqlCommand("spUpdateRequestStatus", BD.ConStr);
-                ObjCmd.CommandType = CommandType.StoredProcedure;
-                ObjCmd.Parameters.AddWithValue("RequestID", RequestID);
-                ObjCmd.Parameters.AddWithValue("RequesterFullName", FullName);
-                //ObjCmd.Parameters.AddWithValue("RequesterAddress", Address);
-                //ObjCmd.Parameters.AddWithValue("RequesterState", Country);
-                ObjCmd.Parameters.AddWithValue("RequesterPhone", Phone);
-                ObjCmd.Parameters.AddWithValue("RequestedRoleName", Role);
-                ObjCmd.Parameters.AddWithValue("RequesterEmail", Email);
-                ObjCmd.Parameters.AddWithValue("RequestApprovalStatus", "APPROVED");
-                BD.UpdateParameters(ObjCmd);
-                //Ad a new Member in Therapist or Student
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('User Created !!!')", true);
 
+                //if created successfully, update request table
+                status = "SUCCESS";
+                
                 //Commented below line to keep admin remain logged in for further user creation
                 //signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
                 //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
@@ -395,26 +386,48 @@ namespace EduSpherePro.EduSpherePro
             else
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
+                status = "ERROR";
             }
+            return status;
         }
 
         //Update RoleRequests Profile
         protected void UpdateRoleRequestsProfile(object sender, DataListCommandEventArgs e)
         {
-            int RequestID = Convert.ToInt32(((Label)e.Item.FindControl("RequestID")).Text);
-            string FullName = ((TextBox)e.Item.FindControl("FullName")).Text;
-            //string Address  = ((TextBox)e.Item.FindControl("Address")).Text;
-            string Address   = ((TextBox)e.Item.FindControl("State")).Text;
-            string Country  = ((TextBox)e.Item.FindControl("State")).Text;
-            string Role     = ((DropDownList)e.Item.FindControl("ddlRole")).SelectedValue.ToString();
-            string Email    = ((TextBox)e.Item.FindControl("Email")).Text;
-            string Phone    = ((TextBox)e.Item.FindControl("Phone")).Text;
+            int RequestID       = Convert.ToInt32(((Label)e.Item.FindControl("RequestID")).Text);
+            string FullName     = ((TextBox)e.Item.FindControl("FullName")).Text;
+            string OrgID        = ((Label)e.Item.FindControl("OrgnaizationID")).Text;
+            string Address      = ((TextBox)e.Item.FindControl("State")).Text;
+            string Country      = ((TextBox)e.Item.FindControl("State")).Text;
+            string Role         = ((DropDownList)e.Item.FindControl("ddlRole")).SelectedValue.ToString();
+            string Email        = ((TextBox)e.Item.FindControl("Email")).Text;
+            string Phone        = ((TextBox)e.Item.FindControl("Phone")).Text;
             //string Password = ((TextBox)e.Item.FindControl("Password")).Text;
             string Password = string.Format(FullName.Substring(0, 1).ToUpper()+ FullName.Substring(1, 3).ToLower()+ "@" + Phone.Substring(0, 4));
             string ApprovalStatus = ((DropDownList)e.Item.FindControl("ddlRequestApprovalStatus")).SelectedValue.ToString();
             if(ApprovalStatus=="APPROVED")
             {
-                CreateNewUser(RequestID, FullName, Email, Phone, Role, Country, Address, Password);
+                //Create new user and grant login role.
+                string UserCreationStatus = CreateNewUser(RequestID, FullName, Email, Phone, Role, Country, Address, Password);
+                if (UserCreationStatus == "SUCCESS")
+                {
+                    //spUpdateRequestStatus also insert the data to Members by executing another procedure on SQL server
+                    SqlCommand ObjCmd = new SqlCommand("spUpdateRequestStatus", BD.ConStr);
+                    ObjCmd.CommandType = CommandType.StoredProcedure;
+                    ObjCmd.Parameters.AddWithValue("@RequestID", RequestID);
+                    ObjCmd.Parameters.AddWithValue("@RequesterFullName", FullName);
+                    ObjCmd.Parameters.AddWithValue("@OrganizationID", Convert.ToInt32(OrgID));//needed for inserting into Members table
+                    //ObjCmd.Parameters.AddWithValue("RequesterState", Country);
+                    ObjCmd.Parameters.AddWithValue("@RequesterPhone", Phone);
+                    ObjCmd.Parameters.AddWithValue("@RequestedRoleName", Role);
+                    ObjCmd.Parameters.AddWithValue("@RequesterEmail", Email);
+                    ObjCmd.Parameters.AddWithValue("@RequestApprovalStatus", "APPROVED");
+                    BD.UpdateParameters(ObjCmd);
+                    //Ad a new Member in Therapist or Student
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('User Created !!!')", true);
+
+
+                }
             }
             if(ApprovalStatus=="EDITROLE")
             {

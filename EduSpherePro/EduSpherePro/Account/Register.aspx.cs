@@ -41,7 +41,7 @@ namespace EduSpherePro.Account
             }
         }
 
-        //New Metod Added by Shivmani-Change Role of Existing User
+        //New Method Added by Shivmani-Change Role of Existing User
         protected void ChangeRole_Click(object sender, EventArgs e)
         {
             SqlCommand CmdObj = new SqlCommand("spChangeRole", BD.ConStr);

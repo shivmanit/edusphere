@@ -40,10 +40,11 @@ SELECT c.MemberID,FullName,PhoneOne,Email,ProgramTitle,SUM(DebitAmount) as Stude
                                                                          JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID
                                                                          JOIN EduSphere.MemberFeeAccount a ON c.MemberID=a.MemberID
                                                                          WHERE c.MemberID='6' GROUP BY c.MemberID,FullName,PhoneOne,Email,ProgramTitle
-SELECT * FROM EduSphere.Members n 
-              JOIN EduSphere.Programs p ON n.ProgramID=p.ProgramID 
-			  JOIN EduSphere.PostalAddresses a ON n.NeurotherapistID=a.NeurotherapistID
-			  WHERE n.MemberID='100'
+SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle 
+            FROM EduSphere.Members c 
+            JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID 
+            WHERE MembershipType='STUDENT' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='zenab.sultan@speedjetaviation.com')
+			ORDER BY MemberID DESC
 --------------------------------
 -------Enroll Students (Insert Neurotherapist is used instead)----------
 --create procedure spInsertStudentDetails

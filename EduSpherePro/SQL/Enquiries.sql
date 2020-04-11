@@ -26,7 +26,7 @@ SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT Organ
                                                                           ORDER BY RequestID DESC
 
 SELECT * FROM EduSphere.RoleRequests WHERE RequesterState=(SELECT RequesterState FROM EduSphere.RoleRequests WHERE RequesterEmail='manore.paresh@gmail.com')
-SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='zenab.sultan@speedjetaviation.com')
+SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='bhuvi.d@speedjetaviation.com')
 
 SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
                     JOIN EduSphere.States p ON r.RequesterState=p.StateID
@@ -46,7 +46,10 @@ ALTER TABLE EduSphere.RoleRequests ADD OrganizationID INT constraint cstMentorOr
 ALTER TABLE EduSphere.RoleRequests ADD City VARCHAR(25)
 
 SELECT * FROM EduSphere.RoleRequests WHERE RequesterEmail='rkneurotherapy@gmail.com'
-UPDATE EduSphere.RoleRequests SET OrganizationID='105' WHERE RequestID=111
+UPDATE EduSphere.RoleRequests SET OrganizationID='105' WHERE City='Mumbai'
+UPDATE EduSphere.RoleRequests SET OrganizationID='107' WHERE City='Pune'
+UPDATE EduSphere.RoleRequests SET OrganizationID='113' WHERE City='Kanpur'
+UPDATE EduSphere.RoleRequests SET OrganizationID='114' WHERE City='Lucknow'
 
 DELETE FROM EduSphere.RoleRequests WHERE RequestID= '102'
 
@@ -127,7 +130,8 @@ CREATE PROCEDURE spUpdateRequestStatus
 @RequesterPhone VARCHAR(50),
 @RequesterEmail VARCHAR(50),
 @RequestedRoleName VARCHAR(50),
-@RequestApprovalStatus VARCHAR(50)
+@RequestApprovalStatus VARCHAR(50),
+@OrganizationID INT
 AS
 BEGIN
   UPDATE EduSphere.RoleRequests SET RequestApprovalStatus=@RequestApprovalStatus WHERE RequestID=@RequestID
@@ -139,7 +143,7 @@ BEGIN
 		 --   SET  @Type='STUDENT'--
 		 -- END--
 	 EXEC spInsertMember @AccessRequestID=@RequestID,		                  
-						   @OrganizationID='90',
+						   @OrganizationID=@OrganizationID,
 						   @ProgramID='90',
 						   @PhotoPath='',
 						   @FullName=@RequesterFullName,
@@ -171,7 +175,17 @@ BEGIN
 END
 
 DROP PROCEDURE spUpdateRequestStatus
+-------------------------------------------View Current Roles---------
+SELECT OrganizationName,u.FullName,u.Email,Name FROM AspNetUsers u 
+							JOIN AspNetUserRoles ur ON u.Id=ur.UserId 
+							JOIN AspNetRoles r ON ur.RoleID=r.Id
+							JOIN EduSphere.Members m ON u.Email=m.Email
+							JOIN EduSphere.Organizations o ON m.OrganizationID=o.OrganizationID
+							ORDER BY Name ASC
 
+SELECT * FROM AspNetUserRoles
+SELECT * FROM AspNetRoles
+SELECT FullName,Email FROM EduSphere.Staff s JOIN AspNetUsers u ON s.Email=u.Email
 ------------------------CHange UserID Role in AsNetUserRoles----
 CREATE PROCEDURE spChangeRole
 @Email VARCHAR(50),
@@ -184,7 +198,7 @@ END
 
 DROP PROCEDURE spChangeRole
 
-EXECUTE spChangeRole 'AdminID@yahoo.com','AdminIC'
+EXECUTE spChangeRole 'sumeekha.shetty@speedjetaviation.com','Manager'
 
 
 ----List of Enquires Raised-----

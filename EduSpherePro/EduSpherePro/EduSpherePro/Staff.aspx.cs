@@ -28,7 +28,7 @@ namespace EduSpherePro.EduSpherePro
                 pnlViewStaffProfile.Visible = false;
                 pnlAddStaff.Visible = false;
 
-                string strCmd = string.Format("SELECT TOP 100 org.OrganizationName as OrganizationName,EmployeeId,FullName,st.PhoneOne as PhoneOne,st.Email as Email FROM EduSphere.Staff st JOIN EduSphere.Organizations org ON st.OrganizationID=org.OrganizationID WHERE EmployeeId>=100 AND EmploymentStatus='{0}' ORDER BY st.FullName ASC", "ACTIVE");
+                string strCmd = string.Format("SELECT TOP 100 org.OrganizationName as OrganizationName,EmployeeId,FullName,st.PhoneOne as PhoneOne,st.Email as Email FROM EduSphere.Staff st JOIN EduSphere.Organizations org ON st.OrganizationID=org.OrganizationID WHERE EmployeeId>=100 AND EmploymentStatus='{0}' ORDER BY org.OrganizationName ASC", "ACTIVE");
                 BD.DataBindToDataList(dlStaff, strCmd);
             }
         }

@@ -41,11 +41,15 @@ Remarks VARCHAR(100)
 
 
 SELECT * FROM EduSphere.Members
+SELECT FullName,AccessRequestID,City,r.OrganizationID as ReqOrg, m.OrganizationID as MemOrg 
+	   FROM EduSphere.Members m JOIN EduSphere.RoleRequests r ON m.AccessRequestID=r.RequestID
+	   ORDER BY r.RequestID 
+
 ALTER TABLE EduSphere.Members DROP CONSTRAINT cstExam
 ALTER TABLE EduSphere.Members DROP COLUMN  AcademicExamStatus
 ALTER TABLE EduSphere.Members ADD  AcademicExamStatus varchar(50) CONSTRAINT cstExam CHECK(AcademicExamStatus IN('SSC','HSC','GRADUATE','POSTGRADUATE'))
 
-UPDATE EduSphere.Members SET AcademicExamStatus='GRADUATE'
+UPDATE EduSphere.Members SET OrganizationID=114 WHERE AccessRequestID >171 AND AccessRequestID <=230
 
 DROP TABLE EduSphere.Members
 sp_help 'EduSphere.Members'

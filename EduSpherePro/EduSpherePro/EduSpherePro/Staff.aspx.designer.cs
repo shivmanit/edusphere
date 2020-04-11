@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EduSpherePro.EduSpherePro {
-    
-    
-    public partial class Staff {
-        
+namespace EduSpherePro.EduSpherePro
+{
+
+
+    public partial class Staff
+    {
+
         /// <summary>
         /// lnkBtnAddStaff control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnAddStaff;
-        
+
         /// <summary>
         /// txtBoxSearchStaff control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxSearchStaff;
-        
+
         /// <summary>
         /// lnkBrnSerachStaff control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBrnSerachStaff;
-        
+
         /// <summary>
         /// lblStaffAction control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffAction;
-        
+
         /// <summary>
         /// pnlAddStaff control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlAddStaff;
-        
+
         /// <summary>
         /// txtBoxFullName control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxFullName;
-        
+
         /// <summary>
         /// ddlOrgId control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlOrgId;
-        
+
         /// <summary>
         /// ddlGender control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGender;
-        
+
         /// <summary>
         /// txtBoxPhoneOne control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxPhoneOne;
-        
+
         /// <summary>
         /// txtBoxPhoneTwo control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxPhoneTwo;
-        
+
         /// <summary>
         /// txtBoxEmail control.
         /// </summary>
@@ -110,7 +112,25 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxEmail;
-        
+
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
         /// <summary>
         /// txtBoxContactAddress control.
         /// </summary>
@@ -119,7 +139,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxContactAddress;
-        
+
         /// <summary>
         /// txtBoxCity control.
         /// </summary>
@@ -128,7 +148,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxCity;
-        
+
         /// <summary>
         /// txtBoxDistrict control.
         /// </summary>
@@ -137,7 +157,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxDistrict;
-        
+
         /// <summary>
         /// txtBoxPinCode control.
         /// </summary>
@@ -146,7 +166,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxPinCode;
-        
+
         /// <summary>
         /// txtBoxState control.
         /// </summary>
@@ -155,7 +175,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxState;
-        
+
         /// <summary>
         /// txtBoxCountry control.
         /// </summary>
@@ -164,7 +184,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxCountry;
-        
+
         /// <summary>
         /// txtBoxDesignation control.
         /// </summary>
@@ -173,7 +193,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxDesignation;
-        
+
         /// <summary>
         /// txtBoxDateOfBirth control.
         /// </summary>
@@ -182,7 +202,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxDateOfBirth;
-        
+
         /// <summary>
         /// ddlManagerId control.
         /// </summary>
@@ -191,7 +211,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlManagerId;
-        
+
         /// <summary>
         /// txtBoxDateOfJoining control.
         /// </summary>
@@ -200,7 +220,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxDateOfJoining;
-        
+
         /// <summary>
         /// ddlEmploymentType control.
         /// </summary>
@@ -209,7 +229,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentType;
-        
+
         /// <summary>
         /// txtBoxFathersName control.
         /// </summary>
@@ -218,7 +238,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxFathersName;
-        
+
         /// <summary>
         /// txtBoxMothersName control.
         /// </summary>
@@ -227,7 +247,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxMothersName;
-        
+
         /// <summary>
         /// txtBoxPan control.
         /// </summary>
@@ -236,7 +256,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxPan;
-        
+
         /// <summary>
         /// txtBoxAadhaar control.
         /// </summary>
@@ -245,7 +265,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxAadhaar;
-        
+
         /// <summary>
         /// txtBoxBankName control.
         /// </summary>
@@ -254,7 +274,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxBankName;
-        
+
         /// <summary>
         /// txtBoxBankAccount control.
         /// </summary>
@@ -263,7 +283,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxBankAccount;
-        
+
         /// <summary>
         /// txtBoxBankIFSC control.
         /// </summary>
@@ -272,7 +292,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxBankIFSC;
-        
+
         /// <summary>
         /// ddlEmploymentStatus control.
         /// </summary>
@@ -281,7 +301,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmploymentStatus;
-        
+
         /// <summary>
         /// lblDtOfLeaving control.
         /// </summary>
@@ -290,7 +310,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDtOfLeaving;
-        
+
         /// <summary>
         /// txtBoxDateOfLeaving control.
         /// </summary>
@@ -299,7 +319,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxDateOfLeaving;
-        
+
         /// <summary>
         /// btnSubmit control.
         /// </summary>
@@ -308,7 +328,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
-        
+
         /// <summary>
         /// pnlUploadStaffDocument control.
         /// </summary>
@@ -317,7 +337,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlUploadStaffDocument;
-        
+
         /// <summary>
         /// lblEmployeeId control.
         /// </summary>
@@ -326,7 +346,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmployeeId;
-        
+
         /// <summary>
         /// flStaffDocumentOne control.
         /// </summary>
@@ -335,7 +355,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flStaffDocumentOne;
-        
+
         /// <summary>
         /// txtBoxStaffDocumentTitleOne control.
         /// </summary>
@@ -344,7 +364,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxStaffDocumentTitleOne;
-        
+
         /// <summary>
         /// lblStaffDocumentPathOne control.
         /// </summary>
@@ -353,7 +373,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffDocumentPathOne;
-        
+
         /// <summary>
         /// btnFileUploadOne control.
         /// </summary>
@@ -362,7 +382,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFileUploadOne;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetailsOne control.
         /// </summary>
@@ -371,7 +391,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetailsOne;
-        
+
         /// <summary>
         /// flStaffDocumentTwo control.
         /// </summary>
@@ -380,7 +400,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flStaffDocumentTwo;
-        
+
         /// <summary>
         /// txtBoxStaffDocumentTitleTwo control.
         /// </summary>
@@ -389,7 +409,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxStaffDocumentTitleTwo;
-        
+
         /// <summary>
         /// lblStaffDocumentPathTwo control.
         /// </summary>
@@ -398,7 +418,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffDocumentPathTwo;
-        
+
         /// <summary>
         /// btnFileUploadTwo control.
         /// </summary>
@@ -407,7 +427,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFileUploadTwo;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetailsTwo control.
         /// </summary>
@@ -416,7 +436,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetailsTwo;
-        
+
         /// <summary>
         /// flStaffDocumentThree control.
         /// </summary>
@@ -425,7 +445,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flStaffDocumentThree;
-        
+
         /// <summary>
         /// txtBoxStaffDocumentTitleThree control.
         /// </summary>
@@ -434,7 +454,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxStaffDocumentTitleThree;
-        
+
         /// <summary>
         /// lblStaffDocumentPathThree control.
         /// </summary>
@@ -443,7 +463,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffDocumentPathThree;
-        
+
         /// <summary>
         /// btnFileUploadThree control.
         /// </summary>
@@ -452,7 +472,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFileUploadThree;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetailThree control.
         /// </summary>
@@ -461,7 +481,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetailThree;
-        
+
         /// <summary>
         /// flStaffDocumentFour control.
         /// </summary>
@@ -470,7 +490,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flStaffDocumentFour;
-        
+
         /// <summary>
         /// txtBoxStaffDocumentTitleFour control.
         /// </summary>
@@ -479,7 +499,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxStaffDocumentTitleFour;
-        
+
         /// <summary>
         /// lblStaffDocumentPathFour control.
         /// </summary>
@@ -488,7 +508,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffDocumentPathFour;
-        
+
         /// <summary>
         /// btnFileUploadFour control.
         /// </summary>
@@ -497,7 +517,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFileUploadFour;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetailsFour control.
         /// </summary>
@@ -506,7 +526,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetailsFour;
-        
+
         /// <summary>
         /// flStaffDocumentFive control.
         /// </summary>
@@ -515,7 +535,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flStaffDocumentFive;
-        
+
         /// <summary>
         /// txtBoxStaffDocumentTitleFive control.
         /// </summary>
@@ -524,7 +544,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxStaffDocumentTitleFive;
-        
+
         /// <summary>
         /// lblStaffDocumentPathFive control.
         /// </summary>
@@ -533,7 +553,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffDocumentPathFive;
-        
+
         /// <summary>
         /// btnFileUploadFive control.
         /// </summary>
@@ -542,7 +562,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFileUploadFive;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetailsFive control.
         /// </summary>
@@ -551,7 +571,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetailsFive;
-        
+
         /// <summary>
         /// flStaffDocumentSix control.
         /// </summary>
@@ -560,7 +580,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flStaffDocumentSix;
-        
+
         /// <summary>
         /// txtBoxStaffDocumentTitleSix control.
         /// </summary>
@@ -569,7 +589,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxStaffDocumentTitleSix;
-        
+
         /// <summary>
         /// lblStaffDocumentPathSix control.
         /// </summary>
@@ -578,7 +598,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStaffDocumentPathSix;
-        
+
         /// <summary>
         /// btnFileUploadSix control.
         /// </summary>
@@ -587,7 +607,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFileUploadSix;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetailsSix control.
         /// </summary>
@@ -596,7 +616,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetailsSix;
-        
+
         /// <summary>
         /// lnkBtnSaveDocumentDetails control.
         /// </summary>
@@ -605,7 +625,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSaveDocumentDetails;
-        
+
         /// <summary>
         /// LinkButton2 control.
         /// </summary>
@@ -614,7 +634,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-        
+
         /// <summary>
         /// pnlViewStaffDocuments control.
         /// </summary>
@@ -623,7 +643,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlViewStaffDocuments;
-        
+
         /// <summary>
         /// gvStaffDocuments control.
         /// </summary>
@@ -632,7 +652,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvStaffDocuments;
-        
+
         /// <summary>
         /// pnlViewStaff control.
         /// </summary>
@@ -641,7 +661,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlViewStaff;
-        
+
         /// <summary>
         /// ddlFilterEmploymentStatus control.
         /// </summary>
@@ -650,7 +670,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFilterEmploymentStatus;
-        
+
         /// <summary>
         /// btnFilterEmploymentStatus control.
         /// </summary>
@@ -659,7 +679,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnFilterEmploymentStatus;
-        
+
         /// <summary>
         /// dlStaff control.
         /// </summary>
@@ -668,7 +688,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList dlStaff;
-        
+
         /// <summary>
         /// pnlViewStaffProfile control.
         /// </summary>
@@ -677,7 +697,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlViewStaffProfile;
-        
+
         /// <summary>
         /// dlStaffDetails control.
         /// </summary>
@@ -686,7 +706,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList dlStaffDetails;
-        
+
         /// <summary>
         /// pnlEditStaffProfile control.
         /// </summary>
@@ -695,7 +715,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlEditStaffProfile;
-        
+
         /// <summary>
         /// dlEditStaffProfile control.
         /// </summary>
