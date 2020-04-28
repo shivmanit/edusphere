@@ -15,7 +15,56 @@
 </script> --%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <h1>Bulk Upload</h1>
+     <!--Page Headers-->
+    <div class="row">
+        <div class="col-sm-3">
+            <h4 class="pink">
+                <i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
+                <asp:Label ID="lblStaffAction" Text="" runat="server"></asp:Label>
+            </h4>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="ace-icon fa fa-check"></i>
+                </span>
+                <asp:TextBox class="form-control search-query" ID="txtBoxSearchStaff" Placeholder="Name or Phone" runat="server"></asp:TextBox>
+                <span class="input-group-btn">
+                    <asp:LinkButton ID="lnkBtnSerachEnquiry" class="btn btn-purple btn-sm" Text="<span class='ace-icon fa fa-search icon-on-right bigger-110'></span> Search" OnCommand="ManageDataImportVisibility" CommandName="SearchEnquiry" runat="server"></asp:LinkButton>
+                </span> 
+            </div>
+        </div>
+        <!--Page Buttons-->
+        <div class="col-sm-4">
+                    <div id="membersbar" class="navbar-buttons navbar-header pull-right" role="navigation">
+					    <ul class="nav ace-nav">
+						    <li class="light-blue dropdown-modal">
+							    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                    DataImports <i class="ace-icon fa fa-caret-down"></i> 
+							    </a>
+							    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+						            <li>
+									     <asp:LinkButton ID="lnkBtnHelp"   OnCommand="ManageDataImportVisibility" CommandName="UploadHelpDocument" Text="Help" runat="server" />
+								    </li>
+                                    <li>
+									    <asp:LinkButton ID="btnViewSmsTrail"   OnCommand="ManageDataImportVisibility" CommandName="ARRAY" Text="SMS Trail" runat="server" />
+								    </li>
+                                    <li class="divider"></li>
+                                    
+								    
+							    </ul>
+						    </li>
+					    </ul>
+				    </div>
+              
+          </div>
+        <!--End Page Buttons-->
+    </div>
+    <div class="hr hr-18 dotted hr-double"></div>
+
+<!--Page Header-->    
+     
+    <h1>Bulk Upload</h1>
         <div class="container py-3">  
             <h2 class="text-center text-uppercase"></h2>  
             <div class="card">  

@@ -198,7 +198,7 @@
                           </div>
                            <div class="col-sm-2">
                                <asp:Label ID="lblRole" Visible="false"  runat="server"></asp:Label>
-                               <asp:Label ID="lblDriveID" Visible="true" runat="server"></asp:Label>
+                               <asp:Label ID="lblDriveID" Visible="false" runat="server"></asp:Label>
                            </div>
                           
                        </div>
@@ -510,6 +510,14 @@
                                                                         <%--<strong>Effort % :</strong>--%><asp:TextBox class="form-control input-sm" ID="txtBoxConsultantThreeEffort" Visible="false" Text="0" runat="server"></asp:TextBox>
                                                                     </div> 
                                                                 </div>
+                                                                <!---Option to create Backdated Bill-->
+                                                                <div class="col-xs-12" style="margin-top: 5px;">
+                                                                <div class="col-xs-6"><asp:CheckBox ID="chkBoxBackDatedBill" Text="BackDatedBill:" runat="server" /></div>
+                                                                    <div class="col-xs-6"><asp:TextBox ID="txtBoxBackDatedBill" Placeholder="dd/mm/yyyy"  Font-Italic="true" runat="server"></asp:TextBox>
+                                                                         
+                                                                    </div>
+                                                                </div>
+                                                                <!--End Back Dated-->
                                                                 <%--<div class="col-xs-12">
                                                                     <div class="col-xs-12"><asp:LinkButton class="green bigger-140 show-details-btn" ID="lnkBtnKart" Text='<i class="ace-icon fa fa-shopping-cart"></i> CLICK TO ADD PRODUCTS' ToolTip="ShoppingKart" OnCommand="PerformMemberAccountTransaction"  CommandName="AddToKart" CommandArgument="" runat="server" /> </div>
                                                                        
@@ -538,7 +546,7 @@
                                                     BonusWallet :<asp:Label ID="lblBonusWalletPoints" runat="server"></asp:Label>--%>
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <div class="col-xs-12 style=margin-5;">
+                                                            <div class="col-xs-12" style="margin-top:5px;">
                                                                 <div class="col-xs-6"><strong>Amount</strong><asp:TextBox class="form-control input-sm"  ID="txtBoxCreditAmount" runat="server"></asp:TextBox></div>
                                                                     <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtBoxCreditAmount"
                                                                             CssClass="text-danger" ErrorMessage="The email field is required." />--%>
@@ -553,7 +561,7 @@
                                                                     </asp:DropDownList>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xs-12 style=margin-5;">
+                                                            <div class="col-xs-12" style="margin-top:5px;">
                                                                 <div class="col-xs-6"><strong>Location</strong><asp:DropDownList class="form-control input-sm"  ID="ddlPaymentLocation" DataTextField="OrganizationName" DataValueField="OrganizationID"  runat="server"></asp:DropDownList>
                                                                    <%-- <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlPaymentLocation"
                                                                                                 CssClass="text-danger" InitialValue="Select" ErrorMessage="Please select Payment Location" />--%>
@@ -568,12 +576,19 @@
                                                                 </div>
                                                             </div>
                                                             
-                                                            <div class="col-xs-12 style=margin-5;">
+                                                            <div class="col-xs-12" style="margin-top:5px;">
                                                                 <div class="col-xs-6"><strong>ConfirmationString</strong><asp:TextBox class="form-control input-sm" Text=""  ID="txtBoxConfirmationCode" runat="server"></asp:TextBox></div>
-                                                                <div class="col-xs-6 style=margin-5;"><asp:Button  class="btn btn-sm btn-info" Text="Received" OnCommand="PerformMemberAccountTransaction" CommandName="CreditAccount" runat="server" /></div>
+                                                                <div class="col-xs-6" style="margin-top:5px"><asp:Button  class="btn btn-sm btn-info" Text="Received" OnCommand="PerformMemberAccountTransaction" CommandName="CreditAccount" runat="server" /></div>
                                                                  
                                                             </div>
-                                                            
+                                                            <!---Option to recieve  Backdated Payment-->
+                                                                <div class="col-xs-12" style="margin-top: 5px;">
+                                                                <div class="col-xs-6"><asp:CheckBox ID="chkBoxBackDatedPayment" Text="BackDatedPayment:" runat="server" /></div>
+                                                                    <div class="col-xs-6"><asp:TextBox ID="txtBoxBackDatedPayment" Placeholder="dd/mm/yyyy"  Font-Italic="true" runat="server"></asp:TextBox>
+                                                                         
+                                                                    </div>
+                                                                </div>
+                                                                <!--End Back Dated-->
                                                             <div class="col-xs-12 style=margin-5;">
                                                               <div class="col-xs-4"><strong>CID For Online Pay :</strong><asp:TextBox ID="txtBoxorderID" class="form-control input-sm" runat="server"></asp:TextBox> </div>
                                                                <div class="col-xs-4"><strong>Online Payment</strong><asp:LinkButton ID="lnkBtnFTCash" class="btn btn-sm btn-warning" Text="<i class='fa fa-credit-card'> FT Cash</i>" ToolTip="Initiate FT Cash Payment" CommandName="OnlinePayment" CommandArgument="" OnCommand="PerformMemberAccountTransaction"  runat="server"></asp:LinkButton></div>

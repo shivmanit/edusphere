@@ -123,12 +123,14 @@ VideoID INT IDENTITY(100,1) CONSTRAINT cstVidId PRIMARY KEY,
 CourseID INT constraint cstCourseVidFK FOREIGN KEY REFERENCES EduSphere.Courses(CourseID),
 ProgramID INT,
 VideoTitle VARCHAR(100),
-VideoDescription VARCHAR(100),
+VideoDescription VARCHAR(300),
 VideoPath VARCHAR(300)
 )
 
 SELECT * FROM EduSphere.CourseVideos
 DROP TABLE EduSphere.CourseVideos 
+
+ALTER TABLE EduSphere.CourseVideos ALTER COLUMN VideoDescription VARCHAR(300) 
 
 INSERT INTO EduSphere.CourseVideos (CourseID,ProgramID,VideoTitle, VideoDescription,VideoPath)
                                  VALUES(100,100,'Principles & Practice of Banking','Introduction','<iframe width="560" height="315" src="https://www.youtube.com/embed/_YW9vxgDw58" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')

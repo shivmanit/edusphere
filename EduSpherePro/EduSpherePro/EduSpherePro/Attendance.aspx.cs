@@ -17,7 +17,7 @@ namespace EduSpherePro.EduSpherePro
         {
             if (!IsPostBack)
             {
-                lblStaffAction.Text         = "Enter your Attendance for the day";
+                lblStaffAction.Text         = "Mark your Attendance for the Day";
                 pnlViewStaff.Visible        = true;
                 pnlViewStaffProfile.Visible = false;
 
@@ -29,7 +29,26 @@ namespace EduSpherePro.EduSpherePro
                 //Display Today Attendace Register
                 DateTime AttendanceDate = DateTime.Now;
                 string strAttendanceDate = AttendanceDate.ToString("yyyy-MM-dd");
-                string strCmd = string.Format("SELECT  *,a.EmployeeId,s.FullName,s.PhoneOne,s.Email FROM EduSphere.StaffAttendance a JOIN EduSphere.Staff s ON a.EmployeeId=s.EmployeeId WHERE AttendanceDate='{0}'  ORDER BY s.FullName ASC", strAttendanceDate);
+                string strCmd = "";
+                if (User.IsInRole("Admin"))
+                {
+                    strCmd = string.Format("SELECT  *,a.EmployeeId,s.FullName,s.PhoneOne,s.Email FROM EduSphere.StaffAttendance a JOIN EduSphere.Staff s ON a.EmployeeId=s.EmployeeId WHERE AttendanceDate='{0}'  ORDER BY s.FullName ASC", strAttendanceDate);
+
+                }
+                if (User.IsInRole("Manager"))
+                {
+                    strCmd = string.Format(@"SELECT  *,a.EmployeeId,s.FullName,s.PhoneOne,s.Email FROM EduSphere.StaffAttendance a 
+                                            JOIN EduSphere.Staff s ON a.EmployeeId=s.EmployeeId 
+                                            WHERE AttendanceDate='{0}' AND OrganizationID=(SELECT OrganizationId FROM EduSphere.Staff WHERE Email='{1}' )  
+                                            ORDER BY s.FullName ASC", strAttendanceDate, User.Identity.Name.ToString());
+                }
+                if (User.IsInRole("Employee"))
+                {
+                    strCmd = string.Format(@"SELECT  *,a.EmployeeId,s.FullName,s.PhoneOne,s.Email FROM EduSphere.StaffAttendance a 
+                                                                                                  JOIN EduSphere.Staff s ON a.EmployeeId=s.EmployeeId 
+                                                      WHERE AttendanceDate='{0}' AND Email='{1}'", strAttendanceDate,User.Identity.Name.ToString());
+                }
+
                 BD.DataBindToDataList(dlStaff, strCmd);
             }
         }

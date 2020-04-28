@@ -25,7 +25,8 @@ UPDATE EduSphere.RoleRequests SET OrganizationID=90
 SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='nisha.verma@speedjetaviation.com')  
                                                                           ORDER BY RequestID DESC
 
-SELECT * FROM EduSphere.RoleRequests WHERE RequesterState=(SELECT RequesterState FROM EduSphere.RoleRequests WHERE RequesterEmail='manore.paresh@gmail.com')
+SELECT * FROM EduSphere.RoleRequests WHERE RequesterEmail='sales@saketsoft.com'
+SELECT * FROM EduSphere.RoleRequests WHERE RequesterState=(SELECT RequesterState FROM EduSphere.RoleRequests WHERE RequesterEmail='sales@saketsoft.com')
 SELECT TOP 1000 * FROM EduSphere.RoleRequests WHERE OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='bhuvi.d@speedjetaviation.com')
 
 SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
@@ -175,7 +176,9 @@ BEGIN
 END
 
 DROP PROCEDURE spUpdateRequestStatus
--------------------------------------------View Current Roles---------
+
+------------------------------------------------------------------------------------------
+-------------------------------------------View Current Member (STUDENTS) Roles---------
 SELECT OrganizationName,u.FullName,u.Email,Name FROM AspNetUsers u 
 							JOIN AspNetUserRoles ur ON u.Id=ur.UserId 
 							JOIN AspNetRoles r ON ur.RoleID=r.Id
@@ -185,7 +188,23 @@ SELECT OrganizationName,u.FullName,u.Email,Name FROM AspNetUsers u
 
 SELECT * FROM AspNetUserRoles
 SELECT * FROM AspNetRoles
+SELECT * FROM AspNetUsers WHERE Email ='sales@saketsoft.com'
+
+DELETE FROM AspNetUsers WHERE Email ='shivmanit@yahoo.com'
+UPDATE AspNetUsers SET Email='Gunja.Dua@speedjetaviation.com',UserName='nisha.verma@speedjetaviation.com' WHERE Email='nisha.verma@speedjetaviation.com'
 SELECT FullName,Email FROM EduSphere.Staff s JOIN AspNetUsers u ON s.Email=u.Email
+
+------------------------------------STAFF ROLES------------------------------------
+
+SELECT OrganizationName,u.FullName,u.Email,UserName,Name as RoleName FROM AspNetUsers u 
+							JOIN AspNetUserRoles ur ON u.Id=ur.UserId 
+							JOIN AspNetRoles r ON ur.RoleID=r.Id
+							JOIN EduSphere.Staff s ON u.Email=s.Email
+							JOIN EduSphere.Organizations o ON s.OrganizationID=o.OrganizationID
+							ORDER BY Name ASC
+
+SELECT FullName,Email,r.Name as RoleName FROM AspNetUsers u JOIN AspNetUserRoles ur ON u.Id=ur.UserId JOIN AspNetRoles r ON ur.RoleID=r.Id WHERE r.Name='Admin' OR r.Name='Manager'
+SELECT FullName,Email,r.Name as RoleName FROM AspNetUsers u JOIN AspNetUserRoles ur ON u.Id=ur.UserId JOIN AspNetRoles r ON ur.RoleID=r.Id WHERE r.Name!='Student'
 ------------------------CHange UserID Role in AsNetUserRoles----
 CREATE PROCEDURE spChangeRole
 @Email VARCHAR(50),

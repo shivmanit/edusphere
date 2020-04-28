@@ -6,12 +6,16 @@ using System.Data.OleDb;
 using System.Data.Common;
 using EduSpherePro.CoreServices;
 using System.IO;
+using System.Web.UI.WebControls;
+using static EduSpherePro.CoreServices.FileService;
+using System.Collections.Generic;
 
 namespace EduSpherePro.EduSpherePro
 {
     public partial class BulkData : System.Web.UI.Page
     {
         BindData BD = new BindData();
+        FileService FS = new FileService();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,6 +24,35 @@ namespace EduSpherePro.EduSpherePro
             }
         }
 
+        //Reading into 
+        protected void ManageDataImportVisibility(object sender, CommandEventArgs e)
+        {
+            string filePath             = string.Concat(Server.MapPath("~/Artifacts/Help/" + "CountryPopulation.csv"));
+            //Array Collection
+            Country[] countries         = FS.ReadFirtNCountries(4, filePath);
+            Country[] ar                = countries;
+            //List Collection
+            List<Country> countryList   = new List<Country>();
+            countryList = FS.ReadAllCountries(filePath);
+            //Dictionary Collection
+            Dictionary<string, Country> countriesDict = new Dictionary<string, Country>();
+            countriesDict = FS.ReadCountriesWithKey(filePath);
+            //foreach(Country cn in countries)
+            //{
+            //    countryList.Add(cn);
+            //}
+            string firstCountryName = countryList[0].Name;
+            string givenCode = "IND";
+            string givenName;
+            Country givenCn = null;
+            //Country givenCn = countriesDict[givenCode];
+            //string givenName = givenCn.Name;
+            bool exists = countriesDict.TryGetValue(givenCode, out givenCn);
+            if (exists)
+                givenName = givenCn.Name;
+
+        }
+        
         private void BindGridview()
         {
             string CS = ConfigurationManager.ConnectionStrings["NTA"].ConnectionString;
@@ -96,7 +129,7 @@ namespace EduSpherePro.EduSpherePro
             //string excelPath = Server.MapPath("~/Artifacts/Help/") + Path.GetFileName(FileUpload1.PostedFile.FileName);
             string excelPath = string.Concat(Server.MapPath("~/Artifacts/Help/" + FileUpload1.FileName));
             FileUpload1.SaveAs(excelPath);
-
+            
             string conString = string.Empty;
             string extension = Path.GetExtension(FileUpload1.PostedFile.FileName);
             switch (extension)

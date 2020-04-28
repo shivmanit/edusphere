@@ -7,11 +7,58 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EduSpherePro.EduSpherePro {
-    
-    
-    public partial class BulkData {
-        
+namespace EduSpherePro.EduSpherePro
+{
+
+
+    public partial class BulkData
+    {
+
+        /// <summary>
+        /// lblStaffAction control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStaffAction;
+
+        /// <summary>
+        /// txtBoxSearchStaff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxSearchStaff;
+
+        /// <summary>
+        /// lnkBtnSerachEnquiry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnSerachEnquiry;
+
+        /// <summary>
+        /// lnkBtnHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnHelp;
+
+        /// <summary>
+        /// btnViewSmsTrail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnViewSmsTrail;
+
         /// <summary>
         /// FileUpload1 control.
         /// </summary>
@@ -20,7 +67,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
+
         /// <summary>
         /// btnUpload control.
         /// </summary>
@@ -29,7 +76,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpload;
-        
+
         /// <summary>
         /// lblMessage control.
         /// </summary>
@@ -38,7 +85,7 @@ namespace EduSpherePro.EduSpherePro {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
-        
+
         /// <summary>
         /// GridView1 control.
         /// </summary>

@@ -40,9 +40,9 @@
             <asp:Label runat="server" AssociatedControlID="ddlRole" CssClass="col-md-2 control-label">Role</asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList runat="server" ID="ddlRole"  CssClass="form-control">                   
-                    <asp:ListItem>AcademicIC</asp:ListItem>                    
-                    <asp:ListItem>Faculty</asp:ListItem>
+                    <asp:ListItem>AcademicIC</asp:ListItem>
                     <asp:ListItem>AdminIC</asp:ListItem>
+                    <asp:ListItem>Employee</asp:ListItem>
                     <asp:ListItem>Manager</asp:ListItem>
                     <asp:ListItem>Admin</asp:ListItem>
                 </asp:DropDownList>

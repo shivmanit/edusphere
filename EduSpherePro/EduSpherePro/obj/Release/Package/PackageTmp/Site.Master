@@ -39,8 +39,8 @@
             <div class="container">
                 <%--<div class="topbar-one__left">
                     
-                        <a href="#"><strong>welcome@poonamshuklainstitute.in</strong></a>
-                        <a href="#"><strong>+91 77770 23021</strong></a>
+                        <a href="#"><strong>info@speedjetavition.com</strong></a>
+                        <a href="#"><strong>+91 9619486234 / 022-20860872/3</strong></a>
                      
                 </div>--%><!-- /.topbar-one__left -->
                  <%--<div class="header__social">
@@ -80,8 +80,8 @@
                 <div class="container clearfix">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="logo-box clearfix">
-                        <a class="navbar-brand" href="default">
-                            <img src="../Content/TemplateSite/images/logo.png" class="main-logo" width="128" alt="Awesome Image" />
+                        <a class="navbar-brand" href="../../default">
+                            <img src="../../Content/TemplateSite/images/logo.png" class="main-logo" width="128" alt="Awesome Image" />
                         </a>
                        
                         <button class="menu-toggler" data-target=".main-navigation">
@@ -92,11 +92,11 @@
                     <div class="main-navigation">
                         <ul class=" navigation-box">
                             <li class="current">
-                                <a href="../about">AboutUs</a>
+                                <a href="../../about">AboutUs</a>
                                 <ul class="sub-menu">
-                                    <li><a href="../about">About SJA</a></li>
-                                    <li><a href="../leadership">Leadership Team</a></li>
-                                    <li><a href="../gallery">Gallery</a></li>
+                                    <li><a href="../../about">About SJA</a></li>
+                                    <li><a href="../../leadership">Leadership Team</a></li>
+                                    <li><a href="../../gallery">Gallery</a></li>
                                     <%--<li><a href="#">Header Versions</a>
                                         <ul class="sub-menu">
                                             <li><a href="default">Header 01</a></li>
@@ -108,7 +108,7 @@
                             </li>
                             
                             <li>
-                                <a href="../programs">Programs</a>
+                                <a href="../../programs">Programs</a>
                                 <ul class="sub-menu">
                                     <%--<li><a href="#">Banking & Finance</a>
                                         <ul class="sub-menu">
@@ -121,15 +121,15 @@
                                     </li>--%>
                                     <li><a href="#">Aviation</a>
                                         <ul class="sub-menu">
-                                            <li><a href="../programs">Aviation Management & Hospitality (Domestic)</a></li>
-                                            <li><a href="../programs">Aviation Management & Hospitality (International)</a></li>                          
-                                            <li><a href="../programs">Commercial Pilot License (CPL)</a></li>
+                                            <li><a href="../../programs">Aviation Management & Hospitality (Domestic)</a></li>
+                                            <li><a href="../../programs">Aviation Management & Hospitality (International)</a></li>                          
+                                            <li><a href="../../programs">Commercial Pilot License (CPL)</a></li>
                                         </ul>
                                     </li>
                                 </ul><!-- /.sub-menu -->
                             </li>
                             <li>
-                                <a href="../faculty">Faculty</a>
+                                <a href="../../faculty">Faculty</a>
                                 <%--<ul class="sub-menu">
                                     <li><a href="teachers.html">Teachers</a></li>
                                     <li><a href="team-details.html">Teachers Details</a></li>
@@ -137,14 +137,14 @@
                                 </ul>--%>
                             </li>
                             <li>
-                                <a href="../enquiry">Enquire</a>
+                                <a href="../../enquiry">Enquire</a>
                                 <%--<ul class="sub-menu">
                                     <li><a href="../admissionprocess">AdmissionProcess</a></li>
                                     <li><a href="../enquiry">Enquire Now</a></li>
                                 </ul>--%>
                             </li>
                             <li>
-                                <a href="../admission">Admission</a>
+                                <a href="../../admission">Admission</a>
                             </li>
                             <%--<li>
                                 <a href="../contact">LocateUs</a>

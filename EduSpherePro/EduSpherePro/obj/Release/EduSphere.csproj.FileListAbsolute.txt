@@ -178,3 +178,4 @@ E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin\Microsoft.Azure.KeyVault.Core.xml
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin\Microsoft.WindowsAzure.Storage.pdb
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin\Microsoft.WindowsAzure.Storage.xml
+E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Release\EduSphere.csproj.CoreCompileInputs.cache

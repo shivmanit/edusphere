@@ -80,8 +80,8 @@
                                                             <ItemTemplate>
                                                                 <div>
                                                                     <h2>Course:<%#Eval("CourseTitle") %></h2>
-                                                                    <h2>Title: <%#Eval("VideoTitle") %></h2>
-                                                                    <h3>Description :<%#Eval("VideoDescription") %></h3>
+                                                                    <p><strong>Title: <%#Eval("VideoTitle") %></strong></p>
+                                                                    <p>Description :<%#Eval("VideoDescription") %></p>
                                                                     <div class="embed-responsive embed-responsive-16by9 hoverable">
                                                                       <video class="embed-responsive-item" controls>
                                                                         <source src="<%#Eval("VideoPath") %>" type="video/mp4">

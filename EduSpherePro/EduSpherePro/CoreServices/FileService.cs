@@ -147,7 +147,87 @@ namespace EduSpherePro.CoreServices
                 System.Web.HttpContext.Current.Response.End();
             }
         }
+        
+        //TEST CODE--Shiv The code below is only of learning and testing pupose
+        //doesn't blogn to project Delete it
+       //Read Firt N Countries using collection Array
+       public Country[] ReadFirtNCountries(int N,string filePath)
+        {
+            Country[] countries = new Country[N];
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                //read header
+                sr.ReadLine();
+                for (int i = 0; i < N; i++)
+                {
+                    //sr.ReadLine();
+                    countries[i] = ReadLineFromCsv(sr.ReadLine());
+                }
+                
+            }
+            return countries;
 
-       
+        }
+        
+        //Read AllCountries using collection List<T>
+        public List<Country> ReadAllCountries(string filePath)
+        {
+            List<Country> countries = new List<Country>();
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                //read header line
+                sr.ReadLine();
+                string csvLine;
+                while((csvLine=sr.ReadLine()) != null)//read till end of file
+                {
+                    countries.Add(ReadLineFromCsv(csvLine));
+                }
+            } 
+            return countries;
+        }
+
+        //read all countries into Dictionary
+        public Dictionary<string,Country> ReadCountriesWithKey(string filePath)
+        {
+            Dictionary<string, Country> countryDict = new Dictionary<string, Country>();
+            using(StreamReader sr=new StreamReader(filePath))
+            {
+                //read header
+                sr.ReadLine();
+                string csvLine;
+                while ((csvLine = sr.ReadLine()) != null)
+                {
+                    Country country = ReadLineFromCsv(csvLine);
+                    countryDict.Add(country.Code, country);
+                }
+
+            }
+                return countryDict;
+        }
+        public Country ReadLineFromCsv(string csvLine)
+        {
+            string[] items      = csvLine.Split(',');
+            string name         = items[0];
+            string code         = items[1];
+            string region       = items[2];
+            int population      = int.Parse(items[3]);
+            return new Country(name, code, region, population);
+        }
+
+        public class Country
+        {
+            public string Name { get; set; }
+            public string Code { get; set; }
+            public string Region { get; set; }
+            public int Population { get; set; }
+            public Country(string name, string code, string region, int population)
+            {
+                Name        = name;
+                Code        = code;
+                Region      = region;
+                Population  = population;
+            }
+        }
+        //End TestCode-- Shiv
     }
 }

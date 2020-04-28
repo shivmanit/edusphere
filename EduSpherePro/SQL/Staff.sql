@@ -50,14 +50,16 @@ SET IDENTITY_INSERT EduSphere.Staff ON
  INSERT INTO EduSphere.Staff(EmployeeId,OrganizationID,FullName) VALUES('90','90','Proxy')
 SET IDENTITY_INSERT EduSphere.Staff OFF
 
-SELECT * FROM EduSphere.Staff
+SELECT * FROM EduSphere.Staff WHERE Email LIKE '%balwant%'
 SELECT * FROM EduSphere.Staff WHERE EmployeeId='100'
 SELECT EmployeeID,FullName,Gender FROM EduSphere.Staff WHERE EmploymentStatus='ACTIVE' ORDER BY FullName ASC
 SELECT OrganizationName,EmployeeId,FullName,st.PhoneOne,st.Email FROM EduSphere.Staff st JOIN EduSphere.Organizations org ON st.OrganizationID=org.OrganizationID WHERE EmploymentStatus='NOTACTIVE' ORDER BY st.FullName ASC
 DELETE FROM EduSphere.Staff WHERE EmployeeId>='100'
 SELECT OrganizationName,EmployeeId,FullName,st.PhoneOne,st.Email FROM EduSphere.Staff st JOIN EduSphere.Organizations org ON st.OrganizationID=org.OrganizationID WHERE EmploymentStatus='NOTACTIVE' ORDER BY st.FullName ASC
 UPDATE EduSphere.Staff SET EmploymentStatus='ACTIVE' WHERE EmployeeId='100'
-SELECT * FROM EduSphere.Staff WHERE EmployeeId='101'
+
+SELECT FullName,Email,OrgID FROM EduSphere.Staff WHERE Email='101'
+SELECT OrganizationName,o.OrganizationID FROM EduSphere.Organizations o JOIN EduSphere.Staff e ON o.OrganizationID=e.OrganizationID WHERE e.Email='bhuvi.d@speedjetaviation.com'
  
 -----------INSERT NEW STAFF-------------
 CREATE PROCEDURE spInsertStaff

@@ -42,16 +42,22 @@ namespace EduSpherePro.EduSpherePro
                 BD.DataBindToDropDownList(ddlFilterOrganizationName, string.Format("SELECT OrganizationName,OrganizationId FROM EduSphere.Organizations WHERE OrganizationType='{0}'", "FRANCHISEE"));
                 string queryRoleRequests;
                 //Allow Manager to view the role request of her/his Organization only ONLY...shivmani 8th April 2020.
-                if (User.IsInRole("Manager"))
+                if (User.IsInRole("Admin"))
+                {
+                    queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
+                                                                            JOIN EduSphere.States p ON r.RequesterState=p.StateID 
+                                                                            JOIN EduSphere.Organizations o on r.OrganizationID=o.OrganizationID  ORDER BY RequestID DESC");
+                }
+                    
+                else
+                {
                     queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r
                                                                           JOIN EduSphere.States p ON r.RequesterState=p.StateID 
                                                                           JOIN EduSphere.Organizations o on r.OrganizationID=o.OrganizationID
                                                                           WHERE r.OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{0}')  
                                                                           ORDER BY RequestID DESC", User.Identity.Name.ToString());
-                else
-                    queryRoleRequests = string.Format(@"SELECT TOP 1000 * FROM EduSphere.RoleRequests r 
-                                                                            JOIN EduSphere.States p ON r.RequesterState=p.StateID 
-                                                                            JOIN EduSphere.Organizations o on r.OrganizationID=o.OrganizationID  ORDER BY RequestID DESC");
+                }
+                    
                 BD.DataBindToGridView(gvRoleRequests, queryRoleRequests, "NA");
 
                 //Displya Count
@@ -396,7 +402,7 @@ namespace EduSpherePro.EduSpherePro
         {
             int RequestID       = Convert.ToInt32(((Label)e.Item.FindControl("RequestID")).Text);
             string FullName     = ((TextBox)e.Item.FindControl("FullName")).Text;
-            string OrgID        = ((Label)e.Item.FindControl("OrgnaizationID")).Text;
+            string OrgID        = ((Label)e.Item.FindControl("lblOrgID")).Text;
             string Address      = ((TextBox)e.Item.FindControl("State")).Text;
             string Country      = ((TextBox)e.Item.FindControl("State")).Text;
             string Role         = ((DropDownList)e.Item.FindControl("ddlRole")).SelectedValue.ToString();

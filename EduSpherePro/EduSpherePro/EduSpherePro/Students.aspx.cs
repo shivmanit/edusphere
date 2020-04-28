@@ -31,17 +31,17 @@ namespace EduSpherePro.EduSpherePro
         {
             if (!Page.IsPostBack)
             {
-                pnlEnroll.Visible = false;
-                pnlPersonalDetails.Visible = false;
-                pnlEditPhoto.Visible = false;
-                pnlMemberSkuStatement.Visible = false;
-                pnlMembers.Visible = true;
-                pnlMemberSummary.Visible = true;
-                //pnlViewEnquiries.Visible = false;
-                pnlCompletedSku.Visible = false;
-                pnlSkuReminders.Visible = false;
-                pnlGreetings.Visible = false;
-                pnlSentMessageHistory.Visible = false;
+                pnlEnroll.Visible               = false;
+                pnlPersonalDetails.Visible      = false;
+                pnlEditPhoto.Visible            = false;
+                pnlMemberSkuStatement.Visible   = false;
+                pnlMembers.Visible              = true;
+                pnlMemberSummary.Visible        = true;
+                //pnlViewEnquiries.Visible      = false;
+                pnlCompletedSku.Visible         = false;
+                pnlSkuReminders.Visible         = false;
+                pnlGreetings.Visible            = false;
+                pnlSentMessageHistory.Visible   = false;
                 //Get user role
                 if (User.Identity.IsAuthenticated)
                 {
@@ -56,12 +56,26 @@ namespace EduSpherePro.EduSpherePro
                 }
 
                 //Display list of customers
-                //Refresh Student List
-                string strCmd = string.Format(@"SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle 
+                //Display all students to Admin and only students of his/her centre to Manager 
+                string strCmd;
+                if (User.IsInRole("Admin"))
+                {
+                    strCmd = string.Format(@"SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle 
+                                                                FROM EduSphere.Members c 
+                                                                JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID 
+                                                                WHERE MembershipType='{0}'
+			                                                    ORDER BY MemberID DESC", "STUDENT", User.Identity.Name.ToString());
+                }
+                else
+                {
+                   strCmd = string.Format(@"SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle 
                                                                 FROM EduSphere.Members c 
                                                                 JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID 
                                                                 WHERE MembershipType='{0}' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='{1}')
-			                                                    ORDER BY MemberID DESC", "STUDENT",User.Identity.Name.ToString());
+			                                                    ORDER BY MemberID DESC", "STUDENT", User.Identity.Name.ToString());
+
+                }
+                
                 //Display Student Count
                 DisplayStudentSummary();
                 BD.DataBindToDataList(dlStudents, strCmd);
@@ -84,18 +98,25 @@ namespace EduSpherePro.EduSpherePro
             string strCmdArg = e.CommandArgument.ToString();
             string strCmd;
             string strSearch = txtBoxSearch.Text;
+            //strCmdArg is empty and not used
             if (strCmdArg == "ALL")
-                strCmd = string.Format("SELECT TOP 50 MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MembershipType='{0}' ORDER BY MemberID DESC","STUDENT");
+                strCmd = string.Format(@"SELECT TOP 50 MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MembershipType='{0}' ORDER BY MemberID DESC","STUDENT");
             else
             {
-                if (User.IsInRole("Manager"))
+                //The Manager can search staff from his/her OrganizationID only
+                if (User.IsInRole("Admin"))
                 {
-                    strCmd = string.Format("SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='{2}'", strSearch, "STUDENT", User.Identity.Name.ToString());
+
+                    strCmd = string.Format(@"SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID " +
+                        "WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}'", strSearch, "STUDENT");
+
 
                 }
+                //The other Roles can search staff of organization belonging to login person only.
                 else
                 {
-                    strCmd = string.Format("SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}' ", strSearch, "STUDENT");
+                    strCmd = string.Format(@"SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID " +
+                        "WHERE MemberID like '%{0}%' OR FullName like '%{0}%' OR PhoneOne like '%{0}%' AND MembershipType='{1}' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='{2}')", strSearch, "STUDENT", User.Identity.Name.ToString());
 
                 }
             }
@@ -193,26 +214,31 @@ namespace EduSpherePro.EduSpherePro
             //Populate service for slection
             string strCmd = string.Format("SELECT SkuID, UPPER(Convert(varchar(10),SkuID) +'-'+ SkuTitle +'-'+ Convert(varchar(10),UnitRate)) AS DisplayText FROM EduSphere.Sku WHERE SkuID>=100 ORDER BY SkuTitle ASC");
             BD.DataBindToDropDownList(ddlSku, strCmd);//For adding service to bill
-                                                           //BD.DataBindToDropDownList(ddlServiceMain, strCmd);//For adding service to enq
-                                                           //BD.DataBindToDropDownList(ddlServiceOtherOne, strCmd);//For adding service to enq
-                                                           //BD.DataBindToDropDownList(ddlServiceOtherTwo, strCmd);//For adding service to enq
+                                                      //BD.DataBindToDropDownList(ddlServiceMain, strCmd);//For adding service to enq
+                                                      //BD.DataBindToDropDownList(ddlServiceOtherOne, strCmd);//For adding service to enq
+                                                      //BD.DataBindToDropDownList(ddlServiceOtherTwo, strCmd);//For adding service to enq
 
             //Populate Employees for slecting consultant Name and ConsultantTwoID From while adding ServieItems to Bill (Debit)
+            string strCmdEmployees="";
             if (User.IsInRole("Admin") || User.IsInRole("Accounts"))
             {
                 BD.DataBindToDropDownList(ddlTxLocation, string.Format("SELECT OrganizationName,OrganizationID FROM EduSphere.Organizations"));
                 BD.DataBindToDropDownList(ddlPaymentLocation, string.Format("SELECT OrganizationName,OrganizationID FROM EduSphere.Organizations"));
+                strCmdEmployees = string.Format("SELECT EmployeeID,FullName FROM EduSphere.Staff WHERE EmploymentStatus='{0}' ORDER BY FullName ASC", "ACTIVE");
+                BD.DataBindToDropDownList(ddlConsultantOneID, strCmdEmployees);
+                BD.DataBindToDropDownList(ddlConsultantTwoID, strCmdEmployees);
+                BD.DataBindToDropDownList(ddlConsultantThreeID, strCmdEmployees);
             }
             else
             {
-                BD.DataBindToDropDownList(ddlTxLocation, string.Format("SELECT OrganizationName,o.OrganizationID FROM EduSphere.Organizations o JOIN EduSphere.Staff e ON o.OrganizationID=e.OrganizationID WHERE Email='{0}'", User.Identity.Name));
-                BD.DataBindToDropDownList(ddlPaymentLocation, string.Format("SELECT OrganizationName,o.OrganizationID FROM EduSphere.Organizations o JOIN EduSphere.Staff e ON o.OrganizationID=e.OrganizationID WHERE Email='{0}'", User.Identity.Name));
-
+                BD.DataBindToDropDownList(ddlTxLocation, string.Format("SELECT OrganizationName,o.OrganizationID FROM EduSphere.Organizations o JOIN EduSphere.Staff e ON o.OrganizationID=e.OrganizationID WHERE e.Email='{0}'", User.Identity.Name));
+                BD.DataBindToDropDownList(ddlPaymentLocation, string.Format("SELECT OrganizationName,o.OrganizationID FROM EduSphere.Organizations o JOIN EduSphere.Staff e ON o.OrganizationID=e.OrganizationID WHERE e.Email='{0}'", User.Identity.Name));
+                strCmdEmployees = string.Format("SELECT EmployeeID,FullName FROM EduSphere.Staff WHERE EmploymentStatus='{0}' AND OrganizationID=(SELECT OrganizationID FROM EduSphere.Staff WHERE Email='{1}') ORDER BY FullName ASC", "ACTIVE", User.Identity.Name);
+                BD.DataBindToDropDownList(ddlConsultantOneID, strCmdEmployees);
+                BD.DataBindToDropDownList(ddlConsultantTwoID, strCmdEmployees);
+                BD.DataBindToDropDownList(ddlConsultantThreeID, strCmdEmployees);
             }
-            string strCmdEmployees = string.Format("SELECT EmployeeID,FullName,Gender FROM EduSphere.Staff WHERE EmploymentStatus='{0}' ORDER BY FullName ASC", "ACTIVE");
-            BD.DataBindToDropDownList(ddlConsultantOneID, strCmdEmployees);
-            BD.DataBindToDropDownList(ddlConsultantTwoID, strCmdEmployees);
-            BD.DataBindToDropDownList(ddlConsultantThreeID, strCmdEmployees);
+
 
             string queryString = string.Format(@"SELECT TOP 5 * ,c.FullName as '{0}',a.TransactionID,s.SkuTitle,con.FullName as '{1}',ref.FullName as '{2}',a.TxDate,a.OfferedRate,a.DebitAmount,a.CreditAmount,a.PaymentMode,a.DigitalPaymentRefCode,a.BalanceAmount FROM EduSphere.Members c JOIN EduSphere.MemberAccount a ON c.MemberId=a.MemberId JOIN EduSphere.Sku s ON s.SkuID=a.SkuID JOIN EduSphere.Staff con ON con.EmployeeID=a.ConsultantOneID JOIN EduSphere.Staff ref ON ref.EmployeeID=a.ConsultantTwoID where c.MemberId='{3}'  order by a.TransactionID desc", "custName", "consName", "refName", strKey);
             //string queryMember = string.Format("SELECT * FROM EduSphere.Members c JOIN EduSphere.MembershipTypes m ON c.MembershipTypeId=m.MembershipTypeId WHERE MemberId='{0}'", strKey);
@@ -499,7 +525,16 @@ namespace EduSpherePro.EduSpherePro
                     ObjCmd.Parameters.AddWithValue("@DiscountAmount", decDiscountAmount);
                     ObjCmd.Parameters.AddWithValue("@DebitAmount", decDebitAmount);
                     ObjCmd.Parameters.AddWithValue("@CreditAmount", decCreditAmount);
-                    ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.Now);
+                    //ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.Now);
+                    //Backdated Bill Provision
+                    if (chkBoxBackDatedBill.Checked)
+                    {
+                        ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.ParseExact(txtBoxBackDatedBill.Text.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture));
+                    }
+                    else
+                    {
+                        ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.Now);
+                    }
                     //for single salon there should not be a need to select salon
                     ObjCmd.Parameters.AddWithValue("@TxLocation", strServiceLocation);//Multistore 
                     //ObjCmd.Parameters.AddWithValue("@ServiceLocation", "S01");//Single salon-the first salon is always named S01
@@ -606,7 +641,16 @@ namespace EduSpherePro.EduSpherePro
                     ObjCmd.Parameters.AddWithValue("@CreditAmount", decCreditAmount);
                     ObjCmd.Parameters.AddWithValue("@DebitAmount", decDebitAmount);
 
-                    ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.Now);
+                    //ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.Now);
+                    //Backdated Payment Provision
+                    if (chkBoxBackDatedPayment.Checked)
+                    {
+                        ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.ParseExact(txtBoxBackDatedPayment.Text.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture));
+                    }
+                    else
+                    {
+                        ObjCmd.Parameters.AddWithValue("@TxDate", DateTime.Now);
+                    }
                     //for a signle branch there should not be need to select service location
                     ObjCmd.Parameters.AddWithValue("@TxLocation", strPaymentLocation);
                     //ObjCmd.Parameters.AddWithValue("@ServiceLocation", "S01");

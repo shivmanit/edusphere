@@ -44,7 +44,10 @@ SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle
             FROM EduSphere.Members c 
             JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID 
             WHERE MembershipType='STUDENT' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='zenab.sultan@speedjetaviation.com')
-			ORDER BY MemberID DESC
+			ORDER BY MembeberID
+
+SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID 
+WHERE MemberID like '%sandhya%' OR FullName like '%sandhya%' OR PhoneOne like '%sandhya%' AND MembershipType='STUDENT' AND OrganizationID=(SELECT OrganizationID FROM EdusPhere.Staff WHERE Email='bhuvi.d@speedjetaviation.com')
 --------------------------------
 -------Enroll Students (Insert Neurotherapist is used instead)----------
 --create procedure spInsertStudentDetails

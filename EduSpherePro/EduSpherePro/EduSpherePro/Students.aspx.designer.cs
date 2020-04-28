@@ -609,6 +609,24 @@ namespace EduSpherePro.EduSpherePro
         protected global::System.Web.UI.WebControls.TextBox txtBoxConsultantThreeEffort;
 
         /// <summary>
+        /// chkBoxBackDatedBill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBoxBackDatedBill;
+
+        /// <summary>
+        /// txtBoxBackDatedBill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxBackDatedBill;
+
+        /// <summary>
         /// lnkBtnAddToInvoice control.
         /// </summary>
         /// <remarks>
@@ -670,6 +688,24 @@ namespace EduSpherePro.EduSpherePro
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBoxConfirmationCode;
+
+        /// <summary>
+        /// chkBoxBackDatedPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBoxBackDatedPayment;
+
+        /// <summary>
+        /// txtBoxBackDatedPayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxBackDatedPayment;
 
         /// <summary>
         /// txtBoxorderID control.

@@ -645,6 +645,7 @@
     <Content Include="Content\TemplateSite\scss\_video.scss" />
     <Content Include="Artifacts\Docs\Principles and Practices of Banking.pdf" />
     <Content Include="Artifacts\Docs\Introduction to aviation.pdf" />
+    <Content Include="Artifacts\Help\CountryPopulation.csv" />
     <None Include="Properties\PublishProfiles\EduSphere - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\EduSpherePro.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

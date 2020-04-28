@@ -173,7 +173,8 @@ E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\bin\Microsoft.Owin.Security.OAuth.xml
-E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Debug\EduSphere.csprojAssemblyReference.cache
+E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Debug\EduSphere.csproj.CoreCompileInputs.cache
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Debug\EduSphere.csproj.CopyComplete
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Debug\EduSpherePro.dll
 E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Debug\EduSpherePro.pdb
+E:\Saketsoft\WebApplications\SpeedjetAviationDotIn\EduSpherePro\EduSpherePro\obj\Debug\EduSphere.csprojAssemblyReference.cache

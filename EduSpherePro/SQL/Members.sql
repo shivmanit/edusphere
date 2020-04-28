@@ -49,6 +49,7 @@ ALTER TABLE EduSphere.Members DROP CONSTRAINT cstExam
 ALTER TABLE EduSphere.Members DROP COLUMN  AcademicExamStatus
 ALTER TABLE EduSphere.Members ADD  AcademicExamStatus varchar(50) CONSTRAINT cstExam CHECK(AcademicExamStatus IN('SSC','HSC','GRADUATE','POSTGRADUATE'))
 
+
 UPDATE EduSphere.Members SET OrganizationID=114 WHERE AccessRequestID >171 AND AccessRequestID <=230
 
 DROP TABLE EduSphere.Members
@@ -56,6 +57,7 @@ sp_help 'EduSphere.Members'
 
 
 ------------------------------------------------------------------TEST--------------------------------
+SELECT MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MemberID like '%ansh%' OR FullName like '%ansh%' OR PhoneOne like '%ansh%' AND MembershipType='STUDENT'
 SELECT TOP 10 MemberID, FullName, Gender,ProgramTitle FROM EduSphere.Members c 
 						JOIN EduSphere.Programs m ON c.ProgramID=m.ProgramID WHERE MembershipType='STUDENT' ORDER BY MemberID DESC
 

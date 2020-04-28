@@ -973,7 +973,7 @@ namespace EduSpherePro.EduSpherePro
                 //Create a path to save the file
                 string filename = Path.Combine(HttpContext.Current.Server.MapPath("~/Artifacts/Docs"), flUpload.FileName);
                 //Display File path in text box for record insertion
-                txtBoxArtifactPath.Text = string.Format("~/Artifacts/Docs/" + flUpload.FileName);
+                txtBoxArtifactPath.Text = string.Format("/Artifacts/Docs/" + flUpload.FileName);
                 //Save the file to our local path
                 flUpload.SaveAs(filename);
             }

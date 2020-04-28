@@ -54,7 +54,13 @@
 								<th>Phone Two</th><td><asp:TextBox ID="txtBoxPhoneTwo" runat="server"></asp:TextBox></td>
 						    </tr>
                             <tr>
-                                <th>Email</th><td><asp:TextBox ID="txtBoxEmail" runat="server"></asp:TextBox></td>
+                                <th>Email</th><td><asp:TextBox ID="txtBoxEmail" runat="server"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBoxEmail"
+                                    ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                    Display = "Dynamic" ErrorMessage = "Invalid email address"/>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBoxEmail"
+                                    ForeColor="Red" Display = "Dynamic" ErrorMessage = "Required" />
+                                              </td>
 								<th>Address</th><td><asp:TextBox ID="txtBoxContactAddress" class="col-sm-10" TextMode="MultiLine" runat="server"></asp:TextBox></td>
                             </tr>
                             <tr>
@@ -250,11 +256,11 @@
        
     <!--View All Staff -->
     <div class="row">
-		    <div class="col-xs-12">
+		    <div class="col-md-12">
                  <!--View Staff-->
                 <asp:Panel ID="pnlViewStaff" ScrollBars="Auto"  runat="server">
                     <!--Filter Staff-->
-                      <div class="col-xs-12">
+                      <div class="col-sm-12">
                     <table>
                         <tr>
                             <th class="col-sm-1">Status</th>
@@ -270,20 +276,20 @@
                 </div>
                     <hr />
                     <!--End Filter Staff-->
-                <div class="col-xs-12">
-                    <asp:DataList ID="dlStaff" DataKeyField="EmployeeId" HorizontalAlign="Justify"   RepeatColumns="1" RepeatDirection="horizontal" GridLines="Vertical" runat="server">
+                <div class="col-sm-12">
+                    <asp:DataList ID="dlStaff" DataKeyField="EmployeeId" HorizontalAlign="Justify"   GridLines="Vertical" runat="server">
                         <HeaderTemplate>
                             <table id="simple-table" class="table  table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th colspan="1"><asp:Label Width="50px" Text="Id" runat="server"></asp:Label></th>
+                                        <th colspan="1"><asp:Label Width="50px" Text="EmpId" runat="server"></asp:Label></th>
 										<th colspan="1"><asp:Label Width="20px" Text="" runat="server"></asp:Label></th>
 										<th colspan="1"><asp:Label Width="100px" Text="Function" runat="server"></asp:Label></th>
 										<th colspan="2"><asp:Label Width="200px" Text="FullName" runat="server"></asp:Label></th>
-										<th colspan="1"><asp:Label Width="200px" Text="Email" runat="server"></asp:Label></th>
+										<th colspan="2"><asp:Label Width="300px" Text="Email" runat="server"></asp:Label></th>
                                         <th colspan="1"><asp:Label Width="150px" Text="Phone" runat="server"></asp:Label></th>
                                         
-                                        <th colspan="2"><asp:Label Width="200px" class="ace-icon fa fa-clock-o bigger-110 hidden-480" Text="" runat="server"></asp:Label></th>				
+                                        <th colspan="2"><asp:Label Width="100px" class="ace-icon fa fa-clock-o bigger-110 hidden-480" Text="" runat="server"></asp:Label></th>				
 										
 									</tr>
 								</thead>
@@ -291,18 +297,18 @@
                         </HeaderTemplate>
                         <ItemStyle HorizontalAlign="Center"   />
                         <ItemTemplate>
-                             <table id="simple-table" class="table  table-bordered table-hover">
+                             <table id="" class="table  table-bordered table-hover">
 								<tbody>
 									<tr>
                                         <td colspan="1"><asp:Label Width="50px" class="label label-sm label-warning" Text=<%#Eval("EmployeeId") %> runat="server"></asp:Label></span></td>
                                         <td><asp:LinkButton Width="20px" ID="btnViewStaffDetails"  class="green bigger-140 show-details-btn" Text="<i class='ace-icon fa fa-angle-double-down bigger-120'></i>" ToolTip="Profile" OnCommand="ManageStaffVisibility" CommandName="ViewProfile" CommandArgument='<%#Eval("EmployeeId") %>' runat="server" ></asp:LinkButton></td>
 										<td colspan="1"><asp:Label Width="100px" Text=<%#Eval("OrganizationName")%> runat="server"></asp:Label></td>
 										<td colspan="2"><asp:Label Width="200px" Text=<%#Eval("FullName")%> runat="server"></asp:Label></td>
-										<td colspan="1"><asp:Label Width="200px" Text=<%#Eval("Email")%> runat="server"></asp:Label> </td>
+										<td colspan="2"><asp:Label Width="300px" Text=<%#Eval("Email")%> runat="server"></asp:Label> </td>
                                         <td colspan="1"><asp:Label Width="150px" Text=<%#Eval("PhoneOne")%> runat="server"></asp:Label></td>
                                         
 										<td colspan="2">
-											<div class="hidden-sm hidden-xs btn-group" style="width:200px;">
+											<div class="hidden-sm hidden-xs btn-group" style="width:100px;">
                                                  
 												<!--<button class="btn btn-xs btn-info">
 													<i class="ace-icon fa fa-book bigger-120"> Accounts</i>
@@ -532,7 +538,13 @@
                                     <tr>
                                         <th>Phone Two</th><td><asp:TextBox ID="txtBoxEditPhoneTwo" Text=<%#Eval("PhoneTwo") %> runat="server"></asp:TextBox></td>
 						            
-                                        <th>Email</th><td><asp:TextBox ID="txtBoxEditEmail" Text=<%#Eval("Email") %> runat="server"></asp:TextBox></td>
+                                        <th>Email</th><td><asp:TextBox ID="txtBoxEditEmail" Text=<%#Eval("Email") %> runat="server"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBoxEditEmail"
+                                                ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                                Display = "Dynamic" ErrorMessage = "Invalid email address"/>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBoxEditEmail"
+                                                ForeColor="Red" Display = "Dynamic" ErrorMessage = "Required" />
+                                                      </td>
 								    </tr>
                                     <tr>
                                         <th>Address</th><td colspan="3"><asp:TextBox ID="txtBoxEditContactAddress" CssClass="col-xs-12" Text=<%#Eval("ContactAddress") %> TextMode="MultiLine" runat="server"></asp:TextBox></td>
